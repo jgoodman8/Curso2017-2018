@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:ns1=""
+	xmlns:dcterms="http://purl.org/dc/terms/">
+  <rdf:Description rdf:nodeID="_:n0">
+    <rdf:type rdf:resource="http://www.w3.org/1999/xhtmlparsererror"/>
+    <ns1:nullstyle>display: block; white-space: pre; border: 2px solid #c77; padding: 0 1em 0 1em; margin: 1em; background-color: #fdd; color: black</ns1:nullstyle>
+    <ns1:http://www.w3.org/1999/xhtmlh3>Below is a rendering of the page up to the first error.</ns1:http://www.w3.org/1999/xhtmlh3>
+    <ns1:http://www.w3.org/1999/xhtmlh3>This page contains the following errors:</ns1:http://www.w3.org/1999/xhtmlh3>
+    <ns1:http://www.w3.org/1999/xhtmldiv rdf:nodeID="_:n1"/>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="_:n1">
+    <ns1:nullstyle>font-family:monospace;font-size:12px</ns1:nullstyle>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.com/about">
+    <dcterms:title>Contratos Menores 2017</dcterms:title>
+    <dcterms:description>Catálogo de contratos menores del Ayto de Madrid en 2017</dcterms:description>
+    <dcterms:issued rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2018-01-24</dcterms:issued>
+  </rdf:Description>
+</rdf:RDF>
