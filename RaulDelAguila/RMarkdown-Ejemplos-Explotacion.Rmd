@@ -1,0 +1,127 @@
+---
+title: "Explotación de open data del Ayto de Madrid"
+author: "Raúl del Águila"
+date: "25 de enero de 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(SPARQL)
+library (ggplot2)
+library(dplyr)
+
+endpoint<-'http://localhost:8890/sparql'
+prefix<-'PREFIX pproc:<http://contsem.unizar.es/def/sector-publico/pproc#>
+PREFIX schema:<http://schema.org/>
+	PREFIX pc:<http://purl.org/procurement/public-contracts#>
+	PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+	PREFIX owl:<http://www.w3.org/2002/07/owl#>
+	PREFIX org:<http://www.w3.org/ns/org#>
+	PREFIX pproc:<http://contsem.unizar.es/def/sector-publico/pproc#>
+	PREFIX dcterms:<http://purl.org/dc/terms/>
+	PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+	PREFIX gr:<http://purl.org/goodrelations/v1>
+	PREFIX foaf:<http://xmlns.com/foaf/0.1/>
+	PREFIX dc:<http://purl.org/dc/elements/1.1/>'
+
+vector_es_outlier_IQR = function (datos, indice.de.columna, coef = 1.5){
+  columna.datos = datos[,indice.de.columna]
+  cuartil.primero = quantile(columna.datos)[2]  #quantile[1] es el mínimo y quantile[5] el máximo.
+  cuartil.tercero = quantile(columna.datos)[4] 
+  iqr = cuartil.tercero - cuartil.primero
+  extremo.superior.outlier = (iqr * coef) + cuartil.tercero
+  extremo.inferior.outlier = cuartil.primero - (iqr * coef)
+  es.outlier  = columna.datos > extremo.superior.outlier |
+    columna.datos < extremo.inferior.outlier
+  return (es.outlier)
+}
+
+```
+
+# Explotación de datos
+
+El área de compras de cualquier organización es una de las más expuestas a riesgos de fraude. Asimismo, todas las organizaciones de determinado tamaño, de acuerdo con la disposición 9/2016 de la Fiscalía y tras las sucesivas Reformas del Código Penal, están obligadas a implementar mecanismos de control basados en la tecnología.
+
+Por este motivo, cada vez es más común la explotación de datos para implementar y dar seguimiento a esos mecanismos de control.
+
+Este trabajo pretende ser una primera aproximación a la explotación de datos abiertos con el objeto de detectar patrones de fraude. Normalmente, estas técnicas están basadas en la búsqueda de la anomalía en los procesos de las organizaciones y en otras técnicas como text mining. 
+
+Es, por tanto, una disciplina que requiere de múltiples fuentes de información. No obstante, se pueden hacer una serie de pruebas sustantivas con el objeto de identificar posibles 'escenarios' aislados de fraude.
+
+El open data nos ofrece la posibilidad de democratizar el análisis de patrones de fraude a la ciudadanía. Es más, en UK ya existe la obligación de publicar todas aquellas investigaciones. Nosotros vamos a realizar una primera aproximación de estos análisis con una porción muy pequeña de datos pero a medida que la web de datos enlazados crezca, los análisis que se podrán realizar serán más complejos.
+
+Nosotros vamos a hacer un ejemplo práctico basado en concentración de proveedores con dos análisis fundamentales: proveedores únicos y proveedores contratados recurrentemente para un tipo de contrato de forma que superen los límites de aprobación.
+
+Para ello, me gustaría destacar que únicamente vamos a tener que relaizar una consulta sparql sobre los datos enlazados y previamente cargados en un SPARQL endpoint (virtuoso, sobre imagen docker, según se especifica en la memoria)
+
+##Ejemplo práctico: concentración de proveedores
+
+Un área típica de análisis es la concentración de proveedores. De este modo, la aparición de un proveedor único cercano a los umbrales de aprobación o la recurrencia de proveedores son aspectos que suelen ser analizados con posterioridad.
+
+Vamos a realizar un primer análisis de concentración de proveedires:
+
+```{r}
+consulta<-paste(prefix,'SELECT ?identifier, ?description, count(*) as ?numerodecontrataciones, sum(?value) as ?sumavalor
+where{
+?contract rdf:type pproc:Contract.
+?contract dcterms:description ?description.
+?contract pc:supplier ?organization.
+?organization rdf:type org:Organization.
+?organization dcterms:identifier ?identifier.
+?contract pc:actualPrice ?bp.
+?bp rdf:type pproc:BundlePriceSpecification;
+<gr:hasCurrencyValue> ?value .
+}
+ORDER BY (?identifier)
+')
+
+qd <- SPARQL(endpoint,consulta)
+df <- qd$results
+
+summary(df)
+
+```
+
+##Proveedores únicos
+
+Vamos a identificar, por tipo de contrato, los proveedores únicos. Los contratos de suministros y servicios tienen un límite máximo de 18.000 y los de obras 50.000. Vamos a analizar aquellos proveedores que son outliers.
+
+```{r cars}
+
+obras<-select(df,identifier,description,numerodecontrataciones,sumavalor) %>%filter(numerodecontrataciones==1 &description=='Contrato de obras' )
+
+servysum<-obras<-select(df,identifier,description,numerodecontrataciones,sumavalor) %>%filter(numerodecontrataciones==1 &(description=='Contrato de servicios' |description=='Contrato de suministros'))
+
+obras.outliers<-vector_es_outlier_IQR(obras,4)
+servysum.outliers<-vector_es_outlier_IQR(servysum,4)
+
+any((obras.outliers)==TRUE)
+any((servysum.outliers)==TRUE)
+
+``` 
+Como se puede observar, no existen ningún outlier sobre la variable precio. Esto es buena señal. No obstante vamos a hacer un análisis más sustantivo, vamos a identificar aquellos que estén justo por debajo del umbral de aprobación (pongamos un criterio discrecional, por ejemplo, 3000 euros en el caso de obras y 1000 en el caso de suministros y servicios)
+
+```{r}
+obras.cercanas.umbral<-select(df,identifier,description,numerodecontrataciones,sumavalor) %>%filter(numerodecontrataciones==1 &description=='Contrato de obras'&sumavalor>=47000 )
+
+servysum.cercanos.umbral<-select(df,identifier,description,numerodecontrataciones,sumavalor) %>%filter(numerodecontrataciones==1 &(description=='Contrato de suministros'|description=='Contrato de servicios'|description=='Contrato privado')&sumavalor>=17000 )
+
+```
+En el caso de obras, existen 2 casos, mientras que en el caso de suministros y servicios existen 36, incluyendo contratos privados.
+
+En este punto, se puede comprobar que existen contratos que han sido prestados por particulares. Normalmente, estos expedientes serían sujeto de análisis. Asimismo, habría que estudiar la naturaleza de los otros contratos y la actividad de las empresas que hay detráss de estos contratos
+
+##Agregación de contratos
+
+Otra área típica de análisis es la agregación de contratos. Esto es, concatenar contratos con determinados proveedores de forma que su agregado esté por encima de los límites de aprobación. Vamos a estudiar si ésto ha sucedido:
+
+
+```{r}
+obras.superiores.umbral<-select(df,identifier,description,numerodecontrataciones,sumavalor) %>%filter(numerodecontrataciones>1 &description=='Contrato de obras'&sumavalor>50000)
+
+servysum.superiores.umbral<-select(df,identifier,description,numerodecontrataciones,sumavalor) %>%filter(numerodecontrataciones>1 &(description=='Contrato de suministros'|description=='Contrato de servicios'|description=='Contrato privado')&sumavalor>=18000 )
+
+```
+
+Se puede ver que existen varios casos en obras, y bastantes más en el caso de serivicios, donde esto se produce. Esto puede representar un riesgo  para cualquier sociedad o institución, dado que representa un cierto grado de dependencia respecto a un único proveedor que debería ser analizado.
