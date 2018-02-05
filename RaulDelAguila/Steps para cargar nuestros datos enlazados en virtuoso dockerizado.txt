@@ -1,7 +1,7 @@
-
+﻿
 
 ##Inicio de la máquina docker
-docker run -p 127.0.0.1:8890:8890 -p 127.0.0.1:1111:1111 -e DBA_PASSWORD="ROOT" -e SPARQL_UPDATE=true -e DEFAULT_GRAPH="http://purl.org/puchase2pay/individuals" -v //DESKTOP-NCTP077/db:/data -d tenforce/virtuoso
+docker run -p 127.0.0.1:8890:8890 -p 127.0.0.1:1111:1111 -e DBA_PASSWORD="ROOT" -e SPARQL_UPDATE=true -e DEFAULT_GRAPH="http://purl.org/puchase2pay/individuals/" -v //DESKTOP-NCTP077/db:/data -d tenforce/virtuoso
 ##Comprobamos que esté corriendo la máquina
 docker ps
 ##Carga de la tripleta
@@ -11,7 +11,7 @@ docker exec -it objective_jones bash
 ##Entramos en la consola de la BBDD
 isql-v -U dba -P $DBA_PASSWORD
 ##Cargamos el grafo en virtuoso
- ld_dir('dumps', '*.ttl', 'http://purl.org/purchase2pay/individuals');
+ ld_dir('dumps', '*.ttl', 'http://purl.org/purchase2pay/individuals/');
 ##Comprobamos que esté disponible
 rdf_loader_run();
  
