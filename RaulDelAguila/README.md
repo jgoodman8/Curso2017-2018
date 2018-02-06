@@ -236,6 +236,8 @@ Se ha utilizado dos servicios para publicar los datos:
 +datahub.io: `http://datahub.io/datalavidaloca/contratos-menores-perfect-mayfly-72`
 +ckan: `https://demo.ckan.org/dataset/348a657f-b18e-4798-9d66-ffcc156a50be/resource/3b0f1c0e-089f-42a6-9b79-2662359cccf5/download/contratos-menores.ttl`
 
+A modo de ejemplo, se puede observar en la siguiente imagen ![imagen](https://github.com/datalavidaloca/Curso2017-2018/blob/master/RaulDelAguila/imagenes/capt3-datahub.png?raw=true) el proceso de publicación en datahub
+
 Ninguno de estos dos servicios, proporciona un método de generar un vocabulario dcat para describir los datos de forma directa (ckan sí permite descargarse una extensión para ubuntu). Como no disponía de este ssoo y datahub parece no permitir la generación de este vocabulario, he usado el servicio de `entryscape.org` para generar un catálogo y un dataset en formato dcat.
 
 El código original generado por este portal es el siguiente:
