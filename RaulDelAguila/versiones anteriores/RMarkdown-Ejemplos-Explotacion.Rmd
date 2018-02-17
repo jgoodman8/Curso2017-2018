@@ -51,9 +51,9 @@ Es, por tanto, una disciplina que requiere de múltiples fuentes de información. 
 
 El open data nos ofrece la posibilidad de democratizar el análisis de patrones de fraude a la ciudadanía. Es más, en UK ya existe la obligación de publicar todas aquellas investigaciones. Nosotros vamos a realizar una primera aproximación de estos análisis con una porción muy pequeña de datos pero a medida que la web de datos enlazados crezca, los análisis que se podrán realizar serán más complejos.
 
-Nosotros vamos a hacer un ejemplo práctico basado en concentración de proveedores con dos análisis fundamentales: proveedores únicos y proveedores contratados recurrentemente para un tipo de contrato de forma que superen los límites de aprobación.
+Nosotros vamos a hacer un ejemplo práctico basado en **concentración de proveedores** con los dos análisis fundamentales que se suelen cubrir en esta tipología de análisis: proveedores únicos y proveedores contratados recurrentemente para un tipo de contrato de forma que superen los límites de aprobación.
 
-Para ello, me gustaría destacar que únicamente vamos a tener que relaizar una consulta sparql sobre los datos enlazados y previamente cargados en un SPARQL endpoint (virtuoso, sobre imagen docker, según se especifica en la memoria)
+Para ello, me gustaría destacar que únicamente vamos a tener que realizar **una consulta sparql** sobre los datos enlazados y previamente cargados en un SPARQL endpoint (virtuoso, sobre imagen docker, según se especifica en la memoria)
 
 ##Ejemplo práctico: concentración de proveedores
 
@@ -125,3 +125,9 @@ servysum.superiores.umbral<-select(df,identifier,description,numerodecontratacio
 ```
 
 Se puede ver que existen varios casos en obras, y bastantes más en el caso de serivicios, donde esto se produce. Esto puede representar un riesgo  para cualquier sociedad o institución, dado que representa un cierto grado de dependencia respecto a un único proveedor que debería ser analizado.
+
+#Conclusiones
+
+1. La web de datos enlazados facilita la transparencia en la contratación pública.
+2. Si bien sería necesario un análisis integral de otras fuentes de datos y de otros datos enlazados, una única consulta sparql sobre estos datos es suficiente para realizar un análisis inicial en el ámbito de la concentración de proveedores.
+3. La combinación de SPARQL para realizar consultas sobre el repositorio de datos y un lenguaje orientado al análisis de dataframes y estadístico de éstos, permite obtener resultados muy potentes con un esfuerzo muy limitado (fíjemonos en las pocas líneas de código que han sido necesarias para realizar este análisis!).
