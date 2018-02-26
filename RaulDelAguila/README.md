@@ -11,7 +11,7 @@ Sin embargo, la lucha contra el fraude no es algo nuevo:
 Instituciones como la ACFE (Association of Certified Fraud Examiners) llevan formando y elaborando estándares de facto en lo relativo a procedimientos y tipología de fraude. 
 Existen firmas de servicios profesionales que tienen departamentos especializados en la investigación y prevención de fraude como, por ejemplo, EY. Estas firmas utilizan procedimientos de análisis financiero, social network analytics, o minería de datos, entre otros, en el contexto de grandes investigaciones de fraude.
 A nivel regulatorio, normativas como la FCPA americana o la UK Bribery Act británica que establecen sanciones para todas aquellas organizaciones que no hayan puesto los medios necesarios para prevenir la corrupción. A nivel nacional, las sucesivas reformas del Código Penal español desde el 2010 se han ido alineando con la normativa internacional, llegando la jurisprudencia nacional a establecer como requerimiento la existencia de controles informáticos para dicha prevención.
-La adjudicación de contratos es una de las principales áreas de análisis en la lucha contra el fraude. El presente  trabajo tiene por objeto el acceso a una fuente de datos abiertos relacionadas con la adjudicación de datos, su transformación de acuerdo con un modelo ontológico, su publicación y un ejemplo de explotación de estos datos.
+La adjudicación de contratos es una de las principales áreas de análisis en la lucha contra el fraude. El presente  trabajo tiene por objeto el acceso a una fuente de datos abiertos relacionadas con la adjudicación de contratos por parte de una administración pública, su transformación de acuerdo con un modelo ontológico, su publicación y un ejemplo de explotación de estos datos.
 La explotación de estos datos se realizará de acuerdo a la búsqueda de patrones de fraude sencillos. En cualquier caso, las conclusiones que se obtengan del análisis de estos datos deben considerarse como una aproximación académica y su finalidad no es la conclusión sobre la eventual existencia de fraude, aspecto para lo que se deberían tener en cuenta otras fuentes de datos (alta de proveedores, procedimientos de licitación, tesorería, entre otros) y realizarse procedimientos de muy diversa naturaleza (análisis forense, entrevistas formales, etc).
 
 ##Fuente de datos
@@ -21,28 +21,26 @@ Se ha accedido al portal de datos abiertos del [Ayuntamiento de Madrid](https://
 ![captura de pantalla de datos abiertos](https://github.com/datalavidaloca/Curso2017-2018/blob/master/RaulDelAguila/imagenes/capt1.png?raw=true)
 
 En este sentido, los datos que vamos a descargar, enlazar y explotar son los relativos a los contratos *menores* contratados por el Ayuntamiento de Madrid.
-En el contexto de la contratación de carácter público y de acuerdo con la [Ley de Contratos del Sector Público](Ley de Contratos del Sector Público 9/2017: https://www.boe.es/boe/dias/2017/11/09/pdfs/BOE-A-2017-12902.pdf)  los contratos menores son aquellos inferiores a 50.000, si son contratos de obras,  ó 18.000 euros si son contratos de servicios o suministros (importes sin IVA). Es necesario señalar que la si bien la última modificación de la Ley es de noviembre de 2017, la versión vigente en el momento de las contrataciones recogidas en el fichero que contiene los contratos menores la aprobada a través de [Real Decreto Legislativo 3/2011](://www.boe.es/boe/dias/2011/11/16/pdfs/BOE-A-2011-17887.pdf).
+En el contexto de la contratación de carácter público y de acuerdo con la [Ley de Contratos del Sector Público](Ley de Contratos del Sector Público 9/2017: https://www.boe.es/boe/dias/2017/11/09/pdfs/BOE-A-2017-12902.pdf)  los contratos menores son aquellos inferiores a 50.000, si son contratos de obras,  ó 18.000 euros si son contratos de servicios o suministros (importes sin IVA). Es necesario señalar que la si bien la última modificación de la Ley es de noviembre de 2017, la versión vigente en el momento de las contrataciones recogidas en el fichero que contiene los contratos menores la aprobada a través de [Real Decreto 
+tivo 3/2011](://www.boe.es/boe/dias/2011/11/16/pdfs/BOE-A-2011-17887.pdf).
 En cuanto a la aprobación y tramitación del expediente, la citada Ley recoge que  en los contratos menores la tramitación del expediente sólo exigirá la aprobación del gasto y la incorporación al mismo de la factura correspondiente, que deberá reunir los requisitos que las normas de desarrollo de esta Ley establezcan; en el caso del contrato menor de obras, deberá añadirse, además, el presupuesto de las obras, sin perjuicio de que deba existir el correspondiente proyecto cuando normas específicas así lo requieran el trabajo afecte a la estabilidad, seguridad o estanqueidad de la obra.
 Este aspecto es muy relevante. Un típico patrón de fraude a analizar es la fragmentación de contratos, mediante sucesivos contratos, novaciones o renovaciones de los mismos,  con objeto de no tener que pasar los requerimientos establecidos para contratos no menores, en concreto, la obligatoriedad de establecer un proceso licitador.
 En cuanto a la contratación, de acuerdo con el citado Real Decreto, los contratos menores podrán adjudicarse directamente a cualquier empresario con capacidad de obrar y que cuente con la habilitación profesional necesaria para realizar la prestación, cumpliendo con las normas que se acaban de describir.
 Una vez expuesta la fuente de datos que vamos a analizar y adelantado el objeto posterior del análisis, pasamos a describir los datos:
 ###Descripción de los datos
 La web desde la que se ha descargado el catálogo de datos, no especifica el formato de cada uno de los ficheros.  La única descripción que recoge de los datos es la siguiente:
->>Contratos menores contabilizados en 2017: listado generado a 15/12/2017, diferenciando los contratos menores que fueron aprobados y contabilizados el año 2016 y los que tras la carga de plurianuales tienen gasto en 2017, de los generados a partir del 1 de enero de 2017 (estos últimos tendrán vacío el campo "Documento 2016").
+>Contratos menores contabilizados en 2017: listado generado a 15/12/2017, diferenciando los contratos menores que fueron aprobados y contabilizados el año 2016 y los que tras la carga de plurianuales tienen gasto en 2017, de los generados a partir del 1 de enero de 2017 (estos últimos tendrán vacío el campo "Documento 2016").
 
-Dado que no se dispone de un descriptivo de los datos, es necesario realizar un análisis en profunidad sobre los mismos. Si bien se puede utilizar OpenRefine para realizar el análisis de los datos, en vez de utilizar esta herramienta para realizar este análisis descriptivo inicial se ha utilizado un script SQL que analiza la estructura, rango y valores de las tablas. El código de este script puede consultarse en el siguiente [enlace]()
+Dado que no se dispone de un descriptivo de los datos, es necesario realizar un análisis en profunidad sobre los mismos. Si bien se puede utilizar OpenRefine para realizar el análisis de los datos, en vez de utilizar esta herramienta para realizar este análisis descriptivo inicial se ha utilizado un script SQL que analiza la estructura, rango y valores de las tablas. El código de este script puede consultarse en el siguiente [enlace](https://raw.githubusercontent.com/datalavidaloca/Curso2017-2018/master/RaulDelAguila/profiling.sql)
 
-El resultado del análisis se encuentra recogido en las siguientes tablas:
-1. Análisis descriptivo de los datos: [tabla 1](https://github.com/datalavidaloca/Curso2017-2018/RaulDelAguila/tablas/Tabla 1 Análisis de los datos.docx)
-2. Rango y valores de los datos: [tabla 2](https://github.com/datalavidaloca/Curso2017-2018/blob/master/RaulDelAguila/tablas/Tabla%202%20Rango%20de%20los%20datos.docx)
+El resultado del análisis se encuentra recogido en la [tabla 1](https://github.com/datalavidaloca/Curso2017-2018/RaulDelAguila/tablas/Tabla 1 Análisis de los datos.docx).
 
 Como se puede comprobar en la tabla 1, existen muchas observaciones que no disponen de datos y otros con una frecuencia de aparición muy baja que, con independencia de la connotación estadística de los mismos, podrían considerarse como anómalos.
 En el contexto de una investigación o análisis de fraude, no se deben alterar los datos recibidos por el cliente. Es decir, se ha de trabajar con esos datos aunque la calidad no sea adecuada. Por ejemplo, en el caso de datos con valor nulo, la gestión de esos datos debe realizarse durante la explotación y la incidencia podría devenir en una recomendación sobre calidad (dado que esas ineficiencias pueden ser aprovechadas para la comisión de un fraude), pero no se ha de suponer que se debe modificar esos datos previo al análisis.
 Asimismo, este primer análisis ya nos ofrece información muy rica sobre los datos que se han de analizar. Por ejemplo, se puede comprobar que la mayor parte de los contratos menores se han concedido en el ámbito de la Salud. Asimismo, los contratos de Servicios y Suministros suponen la práctica totalidad de los contratos seleccionados.
-Por otro lado, no existen valores únicos que sirvan como identificador. Así, por ejemplo, el expediente 115/2017/01534 aparece 30 veces, con diferente descripción.  
-Asimismo, en lo relativo a los importes cercanos a los límites (tabla 1) no existen muchos contratos que sean cercanos al valor del importe máximo o mínimo. Esto ya es un primer indicador de una posible irregularidad, esto es, valores extremos de importe justo por debajo del límite de contratación.
-En lo relativo a rangos y valores de los datos (tabla 2) se puede observar que solamente el Número de Contrato contiene 1.132 observaciones únicas. Por tanto, éste será el número que utilizaremos como identificador unívoco en nuestra ontología.
-Una vez que ya hemos accedido e inspeccionado nuestros datos, vamos a trabajar sobre los vocabularios formalizados u ontologías que pueden representar estos datos para su publicación y explotación posterior.
+Otra conclusión preliminar que se puede obtener es que  no existen muchos contratos que sean cercanos al valor del importe máximo o mínimo. Esto ya es un primer indicador de una posible irregularidad, esto es, valores extremos de importe justo por debajo del límite de contratación.
+Cabe señalar según se puede comprobar en la tabla 1, que no existen valores únicos que sirvan como identificador. Así, por ejemplo, el expediente 115/2017/01534 aparece 30 veces, con diferente descripción.
+Una vez que ya hemos accedido e inspeccionado nuestros datos, vamos a analizar la licencia de los datos y, en caso de poder ser procesados y analizados, trabajaremos sobre los vocabularios formalizados u ontologías que pueden representar estos datos para su publicación y explotación posterior.
 
 ##Licencia de los datos
 
@@ -75,17 +73,17 @@ Cabe señalar que si bien podemos reutilizar estos datos, estamos sujetos a la L
 >La utilización de los conjuntos de datos se realizará por parte de los usuarios o agentes de la reutilización bajo su responsabilidad y riesgo, correspondiéndoles en exclusiva a ellos responder frente a terceros por daños que pudieran derivarse de ella
 
 ##Transformación de los datos
-
+Antes de implementar o reutilizar una ontología, vamos a transformar los datos disponibles de forma que se adapten mejor a la representación del dominio que se pretende modelar (contratos menores en el contexto de una adjudicación pública).
 ###IVA
-Los importes recogidos en esta tabla son superiores a los 50.000 euros. Esto quiere decir que el importe recogido es con IVA.
+Los importes recogidos en esta tabla son superiores a los 50.000 euros. Esto quiere decir que el importe recogido en la tabla lleva incluido el IVA.
 La primera transformación, esto es, diferenciar los importes sin IVA,  la vamos a realizar con OpenRefine porque sí incluye conocimiento que debería representarse en el dominio de los contratos menores (recuérdese que los límites de aprobación están en 50 y 18 mil euros). 
 Para ello, añadiremos una nueva columna sobre la columna de Importe a la que llamaramoe `Importe sin IVA` con la siguiente expresión grel: `value*0,79` (es decir, estamos asumiendo un IVA del 21%)
-###Unicidad de los datos
-Como se ha expuesto con anterioridad, no existe una columna a la que se pueda considerar como única. Esto es debido a que en realidad, hay expedientes que están presentes en más de un registro. 
+###Unicidad de los datos: creación de la columna 'Expediente'
+Como se ha expuesto con anterioridad, no existe una columna a la que se pueda considerar útil como PK, esto es, no existe un valor único por fila. Esto es debido a que en realidad, hay expedientes que están presentes en más de un registro. 
 
 Para resolver este problema, se han realizado las siguientes acciones:
-1. Reordenación de las columnas de forma que Nº de Expediente esté la primera e identificación de registros mediante una operación de Blank down
-2. Creamos una nueva columna, expediente, basada en la anterior. Sobre esta columna se modifica el Nº de Expediente a una expresión del tipo `Exp-NºExpediente-Nºde fila en registro` La expresión grel utilizada es la siguiente: `'Exp-'+cells["Nº expediente"].value.replace(".","").replace("/","-").replace("E11","")+"-"+(row.index-row.record.fromRowIndex+1)`
+1. Reordenación de las columnas de forma que `Nº de Expediente` esté la primera e identificación de registros mediante una operación  `Blank Down`.
+2. Creación de una nueva columna, `Expediente`, basada en la anterior. Sobre esta columna se modifica el Nº de Expediente a una expresión del tipo `Exp-NºExpediente-Nºde fila en registro` La expresión grel utilizada es la siguiente: `'Exp-'+cells["Nº expediente"].value.replace(".","").replace("/","-").replace("E11","")+"-"+(row.index-row.record.fromRowIndex+1)`
 
 ### Otras modificaciones
 Como se ha expuesto con anterioridad, las transformaciones de datos han de limitarse a las mínimas indispensables para permitir la explotación de los datos en el contexto de un análisis de fraude. Por este motivo, el resto de las transformaciones fueron para reconocer fechas o números en el resto de columnas.
@@ -94,7 +92,7 @@ Una vez accedida nuestra fuente de datos, y tras realizar las modificaciones opo
 
 A continuación, detallamos las diferentes acciones realizadas en este punto
 
-###Ontologías
+###Identificación y reutilización de recursos de conocimiento
 
 Para publicar y enlazar los datos abiertos, es necesario utilizar un vocabulario formalizado que sea capaz de representar los mismos en el formato del LOD. 
 Para ello, vamos a analizar en primer lugar los requisitos que nuestra ontología debería resolver y posteriormente identificaremos aquellas ontologías ya existentes que pueden ayudarnos a representar nuestros datos.
@@ -104,7 +102,7 @@ A tal fin, basaremos nuestra selección y eventual desarrollo en las directrices
 ####Especificación de requisitos
 
 Mediante la especificación de requisitos ontológicos se ha pretendido formalizar el alcance de la ontología a desarrollar y los requisitos funcionales o de conocimiento y no funcionales (como usos previstos o lenguajes deimplementación) que la ontología debe satisfacer.
-Ésta, es la parte más relevante de nuestra actividad de desarrollo ontológico dado que va a determinar en buena medida la necesidad de reutilización de recursos de conocimiento (si, por ejemplo, los términos identificados fueran muy específicos), qué escenarios de la metodología NeOn será necesario aplicar y facilita el diseño de la ontología.
+Ésta, es la parte más relevante de esta actividad dado que va a determinar en buena medida la necesidad de reutilización de recursos de conocimiento (si, por ejemplo, los términos identificados fueran muy específicos), qué escenarios de la metodología NeOn será necesario aplicar y facilita el diseño de la ontología.
 En lo relativo a los requisitos funcionales se ha intentado obtener la mayor información posible sobre el dominio de la contratación pública y, más concretamente, de los contratos menores.
 En este apartado, se ha procedido a elaborar una especificación de requisitos ontológicos basada en las directrices de la metodología NeOn, de acuerdo con las directrices establecidas en [Suárez Figueroa; 2010].
 Cabe señalar que puesto que en el desarrollo de esta ontología no se disponía de usuarios expertos en los diferentes dominios, las tareas se han visto simplificadas, si bien debiera realizarse conjuntamente con usuarios expertos en el dominio. Por este motivo, la definición de los requisitos ontológicos se ha basado en el conocimiento que se disponía sobre adjudicación de contratación pública, así como en la explotación que se le pretende dar a la ontología, esto es, la identificación de patrones de fraude.
@@ -144,9 +142,9 @@ Nótese que con esta información ya podemos modelar la casuística de un contra
 
 Como se puede observar, el vocabulario identificado en las preguntas de competencia es bastante específico de los contratos menores. 
 
-Por otro lado, de acuerdo con NeOn, es conveniente identificar los términos utilizados en las preguntas de competencia para tener una primera aproximación de los términos que han de representar nuestros vocabularios enlazados. A tal fin, se ha utilizado el portal LinguaKit. El resultado de esta consulta es el que se puede comprobar en las tablas del siguiente [documento](XXXX)
+Por otro lado, de acuerdo con NeOn, es conveniente identificar los términos utilizados en las preguntas de competencia para tener una primera aproximación de los términos que han de representar nuestros vocabularios enlazados. A tal fin, se ha utilizado el portal LinguaKit. El resultado de esta consulta es el que se puede comprobar en las tablas del siguiente [documento](https://github.com/datalavidaloca/Curso2017-2018/blob/master/RaulDelAguila/tablas/Tabla%203-%20Frecuencia%20de%20t%C3%A9rminos.docx)
 
-Cabe señalar que se debería utilizar un lexicón como EuroWordNet para la identificación de sinónimos y traducciones de cara a refinar más estos listados. Sin embargo y dado que la ontología no es muy complicada, se ha decidido no utilizar esta herramienta.
+Cabe señalar que se debería utilizar un lexicón como EuroWordNet para la identificación de sinónimos y traducciones de cara a refinar más estos listados. Sin embargo y dado que los términos a publicar son escasos y no muy complicados, se ha decidido no utilizar esta herramienta.
 
 ###Identificación y selección de recursos ontológicos
 
@@ -154,8 +152,8 @@ Esta actividad comprende la búsqueda y reutilización de recursos de conocimien
 Cabe recordar que nuestro objetivo no es el desarrollo en sí de una ontología, sino el reutilizar esta ontología para un fin determinado que es el de publicar datos sobre contratos y su posterior explotación. Por tanto, la decisión en este punto no ha sido tanto qué ontologías reutilizar para el desarrollo de una nueva ontología, sino si es necesario desarrollar una ontología con las ya disponibles para realizar esta tarea de anotación y posterior explotación.
 No obstante, el framework de selección de recursos de conocimiento establecido por Suárez Figueroa (2010) es aplicable para el objeto de este trabajo en este punto.
 Asimismo, si bien se pueden reutilizar ontologías generales, como SKOS, este trabajo se ha centrado en la identificación de ontologías del dominio de contratación pública y pagos.
-La división entre nombres, adjetivos y verbos obtenida en el DERO facilita esta labor y  el diseño posterior de la ontología al identificar en una primera instancia nombres, relaciones (objectproperties) y características (data properties) que deberán ser identificadas en nuestra ontología. Sin embargo, ésta debe tomarse como una primera aproximación dado que, por ejemplo, no todos los sustantivos son entidades y pueden ser atributos.
-Gracias a esta primera conceptualización de la ontología se pueden identificar aquellos conceptos que desean ser representados en la misma. En este sentido, la elaboración del glosario de términos es de gran ayuda, también, para la búsqueda y selección de ontologías. Se ha realizado la búsqueda fundamentalmente sobre LinkedOpenVocabularies (LOV) y sobre Google.
+La división entre nombres, adjetivos y verbos obtenida en el DERO facilita esta labor y  el diseño posterior de la ontología al identificar en una primera instancia nombres, relaciones (object properties) y características (data properties) que deberán ser identificadas en nuestra ontología. Sin embargo, ésta debe tomarse como una primera aproximación dado que, por ejemplo, no todos los sustantivos son entidades y pueden ser atributos.
+Gracias a esta primera aproximación a la ontología necesaria, se pueden identificar aquellos conceptos que desean ser representados en la misma. En este sentido, la elaboración del glosario de términos es de gran ayuda, también, para la búsqueda y selección de ontologías. Se ha realizado la búsqueda fundamentalmente sobre LinkedOpenVocabularies (LOV) y sobre Google.
 Cabe señalar que si bien existen otros buscadores, como Swoogle o Schema.org, finalmente se utilizaron los dos anteriores dado que fueron los que mejores y más resultados proporcionaban.
 A continuación se detallan las ontologías candidatas identificadas.
 
@@ -191,7 +189,7 @@ La siguiente tabla contiene el resultado de la evaluación:
 |Requisitos funcionales cubiertos|	Si/Parcialmente/N|	|Parcialmente|Parcialmente|NO|NO|NO|
 
 
-Como consecuencia de lo anterior, se ha decidido eliminar tanto la ontología PAY y ORGES. Asimismo, las ontologías PC y PPROC son ambas ontologías candidatas para ser reutilizadas. NeOn propone una primera evaluación basada en los términos recogidos por ambas ontologías (incluso con medidas de precisión y exhaustividad), y en la cobertura de los mismos.
+Como consecuencia de lo anterior, se ha decidido eliminar  PAY, ORGES y LOTED. Asimismo, las ontologías PC y PPROC son ambas ontologías candidatas para ser reutilizadas. NeOn propone una primera evaluación basada en los términos recogidos por ambas ontologías (incluso con medidas de precisión y exhaustividad), y en la cobertura de los mismos.
 Se puede compprobar Ambas ontologías representan los conceptos recogidos en el DERO y son perfectamente capaz de ser utilizadas para realizar las anotaciones que debemos usar.  La selección de una u otra ontología sería un buen ejercicio teórico, pero dado que el conocimiento que debemos representar no es conceptualmente tan complejo y dado que ambas son capaces de representarlo, cualquier ejercicio a este respecto sería dotar de excesivo artificio a una decisión que debería tomarse por la utilidad y practicidad del recurso a reutilizar.
 Por este motivo se ha optado por la selección de PPROC. Las razones de esta selección son las siguientes:
 1.	PPROC está específicamente diseñada para para representar y enlazar datos de sobre contratos públicos.
@@ -203,7 +201,7 @@ La licencia de PPROC es CC By  SA 4.0, lo que nos permite redistribuir la ontolo
 
 ###Estrategia de nombrado de recursos
 
-Una vez que se ha decidido reutilizar esta ontología, se han de considerar la estrategia de nombrado de nuestros recursos. Por un lado, debemos respetar el modo de referenciar conceptos y propiedades de la ontología PPROC que vamos a reutilizar, a saber: 
+Una vez que se ha decidido reutilizar esta ontología, se debe considerar la estrategia de nombrado de nuestros recursos. Por un lado, debemos respetar el modo de referenciar conceptos y propiedades de la ontología PPROC que vamos a reutilizar, a saber: 
 http://contsem.unizar.es/def/sector-publico/pproc# Esto es lógico dado que normalmente se accederá de forma única a la ontología.
 
 Por otro lado, para referenciar a los individuos, se ha seleccionado por utilizar la barra inclinada ('/'). Se ha seleccionado porque vamos a tener muchas instancias y además múltiples peticiones http, dado que consultaremos los individuos para su explotación.
@@ -214,30 +212,30 @@ Por otro lado, hemos utilizado un dominio purl para abstraer la localización co
 
 Mediante LODRefine, 1.0.3 se ha procedido a transformar los datos de acuerdo con el  modelo definido en la ontología PPROC [ver ejemplo](http://www.semantic-web-journal.net/system/files/swj1142.pdf).
 
-Si bien PPROC es un modelo bastante más rico de lo que necesita nuestros datos, como ya se ha expuesto, es capaz de adaptarse a las necesidades de nuestros datos.
+Si bien PPROC es un modelo bastante más rico de lo que necesita el modelo de los contratos menores del Ayuntamiento de Madrid, como ya se ha expuesto, PPROC es capaz de adaptarse a las necesidades de publicación de nuestros datos y está diseñado para este fin.
 PPROC define una jerarquía de contratos. Específicamente, no define un contrato menor de obra, suministro o servicio. Si nuestro dataset recogiera además de esta casuística otra tipología de contratos, como contratos marco, sería necesario extender la ontología añadiendo una restricción de dominio y modificando la taxonomía de los contratos para poder representar esta casuística.
-
 Siendo el caso de que queremos transformar los datos para su posterior publicación y explotación, y puesto que únicamente tenemos una casuística de contratos, de cara a facilitar su interoperabilidad con otros datos enlazados de similares características (contratación pública) no se ha realizado esta transformación. Únicamente se ha añadido una etiqueta de descripción `dcterms:description`.
-
 Asimismo, es necesario resaltar que en caso de haber sido necesaria esta transformación, habría sido necesario realizar una transformación más compleja que la que OpenRefine permite, es decir, habría que haberse realizado una transformación basada, por ejemplo, en JENA para poder asociar cada registro a una subclase concreta de la ontología.
 
 El RDF generado está publicado en la web http://purl.org/purchase2pay/individuals/.
 
-Asimismo, se puede comprobar la transformación en el proyecto de OpenRfine `Contratos-Menores.openrefine.tar.gz`
+Asimismo, se puede comprobar la transformación en el proyecto de OpenRefine `Contratos-Menores.openrefine.tar.gz` accesible en este repositorio.
 
 ####Enlazado de datos
 
 El enlazado de datos abiertos es un aspecto básico a la hora de poder facilitar un valor añadido a la explotación que podemos realizar de los mismos. De este modo, al asegurar que nuestros datos no están aislados, podemos mejorar la potencial interoperabilidad de nuestro dataset e incrementar los potenciales análisis que nuestra herramienta de prevención y detección de fraude pueda utilizar. 
-En nuestro caso, hemos de pensar que nuestro dataset de forma explícita no ofrece un dato o variable que pueda ser utilizado para su explotación posterior. Asimismo y como ya hemos expuesto con anterioridad, el dataset no describe la autoridad contratante, esto es, el Ayuntamiento de Madrid, sino los departamentos específicos.
+En nuestro caso, hemos de pensar que nuestro dataset de forma explícita no ofrece un dato o variable que pueda ser utilizado para su enlazado posterior. Asimismo y como ya hemos expuesto con anterioridad, el dataset no describe la autoridad contratante, esto es, el Ayuntamiento de Madrid, sino los departamentos específicos.
 Por esta razón se procedió a modelar, gracias a PPROC, la relación existente entre organización y departamento.
-Asimismo, se hizo explícita la aparición del Ayuntamiento de Madrid. Esta es una entidad potencialmente enlazable a otros conjuntos de datos. De entre los conjuntos de datos disponibles, se seleccionó DBpedia para el enlazado de los mismos. . Gracias a la funcionalidad que dispone OpenRefine, se realizó el enlazado a DBPedia del Ayuntamiento de Madrid, a nivel de instancia.imagen:
+Asimismo, se hizo explícita la aparición del Ayuntamiento de Madrid. Esta es una entidad potencialmente enlazable a otros conjuntos de datos. De entre los conjuntos de datos disponibles, se seleccionó DBpedia para el enlazado de los mismos. . Gracias a la funcionalidad que dispone OpenRefine, se realizó el enlazado a DBPedia del Ayuntamiento de Madrid, a nivel de instancia.
 
 ###Publicación
 
 Se ha utilizado dos servicios para publicar los datos:
 
-+datahub.io: https://datahub.io/datalavidaloca/contratos-menores-chilly-baboon-67/v/1#readme
-+ckan: https://demo.ckan.org/dataset/348a657f-b18e-4798-9d66-ffcc156a50be/resource/3b0f1c0e-089f-42a6-9b79-2662359cccf5/download/contratos-menores.ttl
++datahub.io: `http://datahub.io/datalavidaloca/contratos-menores-perfect-mayfly-72`
++ckan: `https://demo.ckan.org/dataset/348a657f-b18e-4798-9d66-ffcc156a50be/resource/3b0f1c0e-089f-42a6-9b79-2662359cccf5/download/contratos-menores.ttl`
+
+A modo de ejemplo, se puede observar en la siguiente imagen ![imagen](https://github.com/datalavidaloca/Curso2017-2018/blob/master/RaulDelAguila/imagenes/capt3-datahub.png?raw=true) el proceso de publicación en datahub
 
 Ninguno de estos dos servicios, proporciona un método de generar un vocabulario dcat para describir los datos de forma directa (ckan sí permite descargarse una extensión para ubuntu). Como no disponía de este ssoo y datahub parece no permitir la generación de este vocabulario, he usado el servicio de `entryscape.org` para generar un catálogo y un dataset en formato dcat.
 
@@ -266,7 +264,7 @@ El código original generado por este portal es el siguiente:
 	dcterms:issued "2018-01-24"^^xsd:date ;
 	dcterms:language <http://publications.europa.eu/resource/authority/language/SPA> ;
 	dcterms:license <http://creativecommons.org/licenses/by-nc-sa/4.0/> ;
-	foaf:homepage "http://purl.org/purchase2pay/individuals" .
+	foaf:homepage "http://purl.org/purchase2pay/individuals/" .
 
 <https://free.entryscape.com/store/170/resource/1> a foaf:Agent ;
 	foaf:name "Purchase2Pay publisher" .
@@ -278,6 +276,8 @@ El código original generado por este portal es el siguiente:
 	dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE> .
 
 ```
+Dado que no tenemos una página web, hemos puesto como homepage la URL de los datos en lazados. En caso de ser una institución, se debería poner la página web de la institución.  
+
 
 Como se puede comprobar, no indica nada de cómo se distribuyen los datos. Se podría complementar este código con el siguiente:
 
@@ -287,9 +287,9 @@ Como se puede comprobar, no indica nada de cómo se distribuyen los datos. Se po
 	dcterms:description "Contratos menores del Ayuntamiento de Madrid, a fecha 15-12-2017"@es ;
 	dcterms:publisher <https://free.entryscape.com/store/170/resource/1> ;
 	dcat:theme <http://publications.europa.eu/resource/authority/data-theme/GOVE>;
-	dcat:distribution <<https://free.entryscape.com/store/170/resource/4>.
+	dcat:distribution <https://free.entryscape.com/store/170/resource/4>.
 <https://free.entryscape.com/store/170/resource/4> a dcat:Distribution
-	dcat:downloadURL: <METER URL >;
+	dcat:downloadURL: <http://datahub.io/datalavidaloca/contratos-menores-perfect-mayfly-72/r/contratos-menores-perfect-mayfly-72_zip.zip>;
     dct:title "Datos del dataset";
     dct:license:<http://creativecommons.org/licenses/by-nc-sa/4.0/>.
 ```
@@ -298,25 +298,30 @@ Se ha realizado un ejemplo de explotación de los datos para evaluar patrones de
 
 Para poder realizar esta evaluación, se dio de alta un sparql endpoint basado en un servidor de app virtuoso sobre docker.
 
-Los pasos llevados para poder realizar el setup de esta infraestructura fueron:
+Los pasos llevados para poder realizar el setup de esta infraestructura fueron los siguientes:
+`
 
-```
 
+***Inicio de la máquina docker***
+`docker run -p 127.0.0.1:8890:8890 -p 127.0.0.1:1111:1111 -e DBA_PASSWORD="ROOT" -e SPARQL_UPDATE=true -e DEFAULT_GRAPH="http://purl.org/puchase2pay/individuals/" -v //DESKTOP-NCTP077/db:/data -d tenforce/virtuoso`
 
-##Inicio de la máquina docker
-docker run -p 127.0.0.1:8890:8890 -p 127.0.0.1:1111:1111 -e DBA_PASSWORD="ROOT" -e SPARQL_UPDATE=true -e DEFAULT_GRAPH="http://purl.org/puchase2pay/individuals/" -v //DESKTOP-NCTP077/db:/data -d tenforce/virtuoso
-##Comprobamos que esté corriendo la máquina
-docker ps
-##Carga de la tripleta
-docker cp Contratos-Menores.ttl objective_jones:/usr/local/virtuoso-opensource/var/lib/virtuoso/db
-##ejecutamos el terminal dentro de nuestro contenedor
-docker exec -it objective_jones bash
-##Entramos en la consola de la BBDD
-isql-v -U dba -P $DBA_PASSWORD
-##Cargamos el grafo en virtuoso
- ld_dir('dumps', '*.ttl', 'http://purl.org/purchase2pay/individuals/');
-##Carga y ejecución
-rdf_loader_run();
+***Comprobamos que esté corriendo la máquina***
+`docker ps`
+
+***Carga de la tripleta*** 
+`docker cp Contratos-Menores.ttl objective_jones:/usr/local/virtuoso-opensource/var/lib/virtuoso/db`
+
+***Ejecutamos el terminal dentro de nuestro contenedor***
+`docker exec -it objective_jones bash`
+
+***Entramos en la consola de la BBDD***
+`isql-v -U dba -P $DBA_PASSWORD`
+
+***Cargamos el grafo en virtuoso***
+`ld_dir('dumps', '*.ttl', 'http://purl.org/purchase2pay/individuals/');`
+
+***Carga y ejecución***
+`rdf_loader_run();`
  
 ```
 
