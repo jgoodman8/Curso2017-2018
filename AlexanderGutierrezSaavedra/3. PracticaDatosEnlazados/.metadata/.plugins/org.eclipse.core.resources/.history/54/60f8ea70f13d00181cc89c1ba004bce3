@@ -1,0 +1,100 @@
+package co.com.datosenlazados.sparqsql;
+
+import java.io.InputStream;
+
+import org.apache.jena.query.Query;
+import org.apache.jena.query.QueryExecution;
+import org.apache.jena.query.QueryExecutionFactory;
+import org.apache.jena.query.QueryFactory;
+import org.apache.jena.query.QuerySolution;
+import org.apache.jena.query.ResultSet;
+import org.apache.jena.rdf.model.Literal;
+import org.apache.jena.rdf.model.Model;
+import org.apache.jena.rdf.model.ModelFactory;
+import org.apache.jena.rdf.model.Resource;
+import org.apache.jena.util.FileManager;
+//import org.apache.jena.vocabulary.VCARD;
+
+public class ConsultaSparqSQL {
+	/*Creación de variables estáticas iniciales */
+	public static String ns = "http://somewhere#";
+	public static String foafNS = "http://xmlns.com/foaf/0.1/";
+	//public static String foafEmailURI = foafNS+"email";
+	//public static String foafKnowsURI = foafNS+"knows";
+	
+	public static void main(String[] args) {
+		String archivoRDF = "Accidentalidad-en-medellin-2017.rdf";
+		//String archivoRDF = "D:\\Personal\\Master\\Materias\\Web semántica\\WorkSpace\\JenaTutorial2015\\Jena\\example3.rdf";
+		
+		// 1. Crear un modelo vacío
+		Model modelo = ModelFactory.createDefaultModel();
+				
+		// 2. Cargar el archivo sobre el que se va a consultar
+		InputStream archivoEntrada = FileManager.get().open(archivoRDF);
+
+		if (archivoEntrada == null)
+			throw new IllegalArgumentException("El archivo: "+archivoRDF+" no fue encontrado");
+
+		// 3. Leer el archivo RDF
+		modelo.read(archivoEntrada, null);
+		
+		// List all the resources with the property "acc:barrio"
+		/*String queryString = 
+				"PREFIX acc: <http://antioquia.opendata.co/accidentes#/> " +
+						"SELECT ?FullName "+
+						"WHERE { ?Subject acc:barrio ?FullName.} ";*/
+		String queryString = 
+				"PREFIX acc: <http://antioquia.opendata.co/accidentes#> " +
+				"SELECT ?cosa "+
+				"WHERE { ?cosa acc:barrio ?FullName.} ";
+		Query query = QueryFactory.create(queryString);
+		QueryExecution qexec = QueryExecutionFactory.create(query, modelo) ;
+		ResultSet results = qexec.execSelect() ;
+		
+		//System.out.println("query: "+query);
+		while (results.hasNext())
+		{
+			QuerySolution binding = results.nextSolution();
+			Resource subj = (Resource) binding.get("cosa");
+		    System.out.println("Subject: "+subj.getURI());
+		}
+		
+		/*
+		
+		// ** TASK 3.1: List all the resources with the property "vcard:FN" and their full names **
+		
+		queryString = 
+				"PREFIX vcard: <" + VCARD.getURI() + "> " +
+				"SELECT ?FullName "+
+				"WHERE { ?Subject vcard:FN ?FullName.} ";
+		query = QueryFactory.create(queryString);
+		qexec = QueryExecutionFactory.create(query, modelo) ;
+		results = qexec.execSelect() ;
+		
+		while (results.hasNext())
+		{
+			QuerySolution binding = results.nextSolution();
+			Resource subj = (Resource) binding.get("Subject");
+			Literal fn = binding.getLiteral("FullName");
+		    System.out.println("FullName: "+fn);
+		}
+		// ** TASK 3.2: Query all the resources with the family name "Smith" **
+		queryString = 
+				"PREFIX vcard: <" + VCARD.getURI() + "> " +
+				"SELECT ?FullName "+
+				"WHERE { ?Subject vcard:Family 'Smith'.} ";
+		query = QueryFactory.create(queryString);
+		qexec = QueryExecutionFactory.create(query, modelo) ;
+		results = qexec.execSelect() ;
+		
+		while (results.hasNext())
+		{
+			QuerySolution binding = results.nextSolution();
+			Resource subj = (Resource) binding.get("Subject");
+			Literal fn = binding.getLiteral("FullName");
+		    System.out.println("Family Smith: "+fn);
+		}
+*/
+	}
+
+}
