@@ -102,14 +102,14 @@ Se procede con la creación de la ontología, para lo cual se usó la herramienta P
 ![alt text][img1]
 
 [img1]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image001.png "Figura 1. Clases de la ontología."
-Figura 1. Clases de la ontología.
+*Figura 1. Clases de la ontología.*
 
 3.	Se definieron las propiedades a cada una de las clases. Ver figura 2.
 
 ![alt text][img2]
 
 [img2]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image002.png "Figura 2. Propiedades de las clases de la ontología"
-Figura 2. Propiedades de las clases de la ontología
+*Figura 2. Propiedades de las clases de la ontología.*
 
 4.	Se asignaron las propiedades y tipo de dato a cada una de las clases. Ver figura 3.
  
@@ -117,44 +117,44 @@ Figura 2. Propiedades de las clases de la ontología
 ![alt text][img3]
 
 [img3]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image003.png "Figura 3. Propiedades de las clases de la ontología."
-Figura 3. Propiedades de las clases de la ontología.
+*Figura 3. Propiedades de las clases de la ontología.*
 
 5.	Se crearon las relaciones y se asignaron las clases correspondientes a cada relación, ver figura 4.
 
 ![alt text][img4]
 
 [img4]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image004.png "Figura 4. Relaciones y clases asociadas."
-Figura 4. Relaciones y clases asociadas.
+*Figura 4. Relaciones y clases asociadas.*
 
 6.	Se crearon instancias de clases con data de ejemplo y tipos de datos, para ver la forma de las relaciones, ver figura 5 y 6.
 
 ![alt text][img5]
 
 [img5]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image005.png "Figura 5. Ejemplos de clases dentro de la ontología."
-Figura 5. Ejemplos de clases dentro de la ontología.
+*Figura 5. Ejemplos de clases dentro de la ontología.*
 
 
 ![alt text][img6]
 
 [img6]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image006.png "Figura 6 Grafo de relaciones entre las clases de la ontología." 
-Figura 6 Grafo de relaciones entre las clases de la ontología.
+*Figura 6. Grafo de relaciones entre las clases de la ontología.*
 
 
 
-Enlazado de datos
+## Enlazado de datos
 Para esta labor se utilizó el aplicativo LodRefine de la siguiente manera:
 1.	Se crea un proyecto nuevo en la herramienta, con los datos del open data de la alcaldía de Medellín en formato csv. Ver figura 7 y 8.
 
 ![alt text][img7]
 
 [img7]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image007.png "Figura 7. Creación del proyecto en LodRefine."
-Figura 7. Creación del proyecto en LodRefine.
+*Figura 7. Creación del proyecto en LodRefine.*
 
 
 ![alt text][img8]
 
 [img8]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image008.png "Figura 8. Proyecto creado en LodRefine." 
-Figura 8. Proyecto creado en LodRefine.
+*Figura 8. Proyecto creado en LodRefine.*
 
 
 2.	Se definen las propiedades de importación de los datos (24.352 registros) y se procede a finalizar la creación del proyecto. Figura 9.
@@ -162,14 +162,14 @@ Figura 8. Proyecto creado en LodRefine.
 ![alt text][img9]
 
 [img9]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image009.png "Figura 9. Archivo csv importado correctamente en LodRefine." 
-Figura 9. Archivo csv importado correctamente en LodRefine.
+*Figura 9. Archivo csv importado correctamente en LodRefine.*
 
 3.	Se procede con la transformación de los datos para que concuerden los tipos de datos con los ya identificados anteriormente. En la figura 10 se pueden ver las columnas trasformadas en color verde.
 
 ![alt text][img10]
 
 [img10]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image010.png "Figura 10. Transformación de columnas en LodRefine." 
-Figura 10. Transformación de columnas en LodRefine.
+*Figura 10. Transformación de columnas en LodRefine.*
 
 
 4.	Realizamos algunos cambios en la data para corregir valores con la ayuda de los Facet, que fueron cargados con error debido al uso de tildes y ñ. En la figura 11 se puede observar este cambio.
@@ -177,21 +177,21 @@ Figura 10. Transformación de columnas en LodRefine.
 ![alt text][img11]
 
 [img11]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image0011.png "Figura 11. Corrección de data en LodRefine." 
-Figura 11. Corrección de data en LodRefine.
+*Figura 11. Corrección de data en LodRefine.*
 
 5.	Se crearon las columnas CARRERA y CALLE a partir de la columna DIRECCIÓN para dar mayor claridad. Ver figura 12.
 
 ![alt text][img12]
 
 [img12]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image012.png "Figura 12. Adición de columnas nuevas en LodRefine." 
-Figura 12. Adición de columnas nuevas en LodRefine.
+*Figura 12. Adición de columnas nuevas en LodRefine.*
 
 6.	Se eliminan las columnas DIRECCIÓN, DIRECCION_ENC, ya que estas fueron reemplazadas por CARRERA y CALLE. Ver figura 13.
 
 ![alt text][img13]
 
 [img13]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image013.png "Figura 13. Eliminación de columnas en LodRefine."
-Figura 13. Eliminación de columnas en LodRefine.
+*Figura 13. Eliminación de columnas en LodRefine.*
 
 Una vez tenemos la data depura, procedemos a la definición del mapping entre el esquema de datos definido y la ontología creada en la primera parte. Para ello procedemos de la siguiente forma:
 
@@ -201,7 +201,7 @@ Una vez tenemos la data depura, procedemos a la definición del mapping entre el 
 ![alt text][img14]
 
 [img14]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image014.png "Figura 14. Carga de ontologías en LodRefine."
-Figura 14. Carga de ontologías en LodRefine.
+*Figura 14. Carga de ontologías en LodRefine.*
 
 
 
@@ -211,7 +211,7 @@ Figura 14. Carga de ontologías en LodRefine.
 ![alt text][img15]
 
 [img15]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image015.png "Figura 15. Modificación de la URI en LodRefine."
-Figura 15. Modificación de la URI en LodRefine.
+*Figura 15. Modificación de la URI en LodRefine.*
 
 
 3.	Se crean las propiedades para cada tipo RDF añadido. Ver figura 16.
@@ -220,7 +220,7 @@ Figura 15. Modificación de la URI en LodRefine.
 ![alt text][img16]
 
 [img16: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image016.png "Figura 16. Adición de propiedades en LodRefine."
-Figura 16. Adición de propiedades en LodRefine.
+*Figura 16. Adición de propiedades en LodRefine.*
 
 
 
@@ -235,4 +235,6 @@ Figura 16. Adición de propiedades en LodRefine.
 ![alt text][img17]
 
 [img17]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image018.png "Figura 17. Export de data en formato turtle."
-Figura 17. Export de data en formato turtle.
+*Figura 17. Export de data en formato turtle.*
+
+[Capítulo 2](https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/Capitulo2.md)
