@@ -61,7 +61,7 @@ Tabla 1. Estructura de la data de accidentalidad.
 Para la creación de la URI se constituyó a partir de:
 
 1. Raíz de la URI: http://antioquia.opendata.co
-2. Nombramiento de recursos: http://antioquia.opendata.co/&lt;nombre\_recurso&gt;/
+2. Nombramiento de recursos: http://antioquia.opendata.co/<nombre\_recurso>/
 
 ### Modelado y Generación
 
