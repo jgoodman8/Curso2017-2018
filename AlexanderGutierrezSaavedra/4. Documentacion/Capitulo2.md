@@ -73,7 +73,35 @@ En esta consulta se definió la necesidad de encontrar la clase, gravedad y radic
 [img24]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image024.png "Figura 24. Resultado de filtro en Excel similar a la Consulta SPARQL con creación de variable." 
 *Figura 24. Resultado de filtro en Excel similar a la Consulta SPARQL con creación de variable.*
 
-[Capítulo 1](https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/Capitulo1.md)
+# Conclusiones
+
++ A partir del trabajo realizado, se puede concluir que el uso de datos enlazados representa un eje fundamental a la hora de consultar información en la web de manera oportuna.
+En este sentido, se pueden observar las ventajas que dan los Datos Enlazados en la descripción de los recursos de bibliotecas que deseen compartir sus datos, tanto para entidades o instituciones como usuarios afines.
+
++ Es claro que la aplicación tecnológica de la Web Semántica y Datos enlazados en la web debe tener ajustes que permitan mejorar algunos aspectos, buscando corregir algunas limitaciones y problemas que se pueden presentar por la estructura de algunos datos, sin embargo, también cabe mencionar que existen muchas herramientas que nos permiten construir datos enlazados con calidad. Para ello se requiere cierta experiencia que se adquiere con la manipulación constante y efectiva de estas herramientas y datos.
+
++ La práctica fue muy enriquecedora, ya que se ponen a prueba los conocimientos adquiridos durante todo el curso y permite descubrir las falencias que aún se puedan tener. En general considero esta metodología uso de datos enlazados debe ser promovida para alcanzar unos niveles considerables en los que diferentes aplicaciones puedan obtener muchos beneficios.
+
+
+
+
+
+
+# Lista de referencias
+**GREL String Functions. (s.f.). OpenRefine Expression Language. Recuperado de [https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions](https://github.com/OpenRefine/OpenRefine/wiki/GREL-String-Functions)**
+
+**Ontology Pitfall Scanner (s.f.). Recuperado de [http://oops.linkeddata.es/response.jsp](http://oops.linkeddata.es/response.jsp)**
+	
+**Anatomy of a simple SPARQL query. (s.f.). Recuperado de [https://www.ibm.com/developerworks/library/j-sparql/](https://www.ibm.com/developerworks/library/j-sparql/)**
+
+**Cicourel. I., b. (agosto 29 de 2016). Semantic Web 101: SPARQL. Recuperado el 30 de marzo de 2018 de [https://www.codementor.io/isaib.cicourel/sparql-query-using-endpoints-101-du10884g8](https://www.codementor.io/isaib.cicourel/sparql-query-using-endpoints-101-du10884g8)**
+
+**Fariz. D.,Werner N. (2014-2015). Handling RDF in Java: The Jena Framework. Recuperado el 30 de marzo de 2018 de [http://www.inf.unibz.it/~nutt/Teaching/SemTechs1415/SemTechsLabs/exercises-2.pdf](http://www.inf.unibz.it/~nutt/Teaching/SemTechs1415/SemTechsLabs/exercises-2.pdf)**
+
+ 
+
+
+***[Volver al Capítulo 1](https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/Capitulo1.md)***
 
 
  

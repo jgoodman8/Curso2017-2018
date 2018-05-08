@@ -176,7 +176,7 @@ Para esta labor se utilizó el aplicativo LodRefine de la siguiente manera:
 
 ![alt text][img11]
 
-[img11]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image0011.png "Figura 11. Corrección de data en LodRefine." 
+[img11]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image011.png "Figura 11. Corrección de data en LodRefine." 
 *Figura 11. Corrección de data en LodRefine.*
 
 5.	Se crearon las columnas CARRERA y CALLE a partir de la columna DIRECCIÓN para dar mayor claridad. Ver figura 12.
@@ -219,7 +219,7 @@ Una vez tenemos la data depura, procedemos a la definición del mapping entre el 
 
 ![alt text][img16]
 
-[img16: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image016.png "Figura 16. Adición de propiedades en LodRefine."
+[img16]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image016.png "Figura 16. Adición de propiedades en LodRefine."
 *Figura 16. Adición de propiedades en LodRefine.*
 
 
@@ -232,9 +232,10 @@ Una vez tenemos la data depura, procedemos a la definición del mapping entre el 
 ![alt text][img17]
 
 [img17]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image017.png "Figura 17. Export de data en formato turtle."
-![alt text][img17]
 
-[img17]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image018.png "Figura 17. Export de data en formato turtle."
+![alt text][img18]
+
+[img18]: https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/image018.png "Figura 17. Export de data en formato turtle."
 *Figura 17. Export de data en formato turtle.*
 
-[Capítulo 2](https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/Capitulo2.md)
+***[Ir al Capítulo 2](https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/Capitulo2.md)***
