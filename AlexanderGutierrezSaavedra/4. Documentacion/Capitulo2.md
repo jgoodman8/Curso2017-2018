@@ -1,4 +1,4 @@
-**Trabajo de datos enlazados**
+**Trabajo de datos enlazados** Licencia: [![CCBY](https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/ccby.png)](https://creativecommons.org/licenses/by/3.0/)
 
 
         Alexander Gutiérrez Saavedra.
