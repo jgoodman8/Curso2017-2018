@@ -5,6 +5,8 @@
     Alexander Gutiérrez Saavedra.
     Marzo 2017.
 
+Licencia: [![CCBY](https://github.com/alexandergusa/Curso2017-2018/blob/master/AlexanderGutierrezSaavedra/4.%20Documentacion/imagenes/ccby.png)](https://creativecommons.org/licenses/by/3.0/)
+
 
 # Introducción
 Promover una fuente de datos enlazados, requiere conocer con más detalle el origen de los datos, desde su estructura hasta su dominio. Cuando tenemos la claridad suficiente de este detalle, es posible entender y diseñar la forma como se debe abordar un proyecto de datos enlazados, determinando si es necesario o no la construcción o reúso de ontologías que permitan exponer los datos a quien los requiera. Teniendo claridad en estos puntos se hace necesario explorar con profundidad la data que se desea enlazar, depurando las inconsistencias que no van de acuerdo con los requisitos definidos y mapeando las reglas allí contempladas, para finalmente generar nuestros datos enlazados. 
