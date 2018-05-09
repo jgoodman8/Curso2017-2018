@@ -1,0 +1,10 @@
+package co.com.datosenlazados.sparqsql;
+
+public class ConsultaSparqSQL {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

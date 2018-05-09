@@ -1,0 +1,575 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://antioquia.opendata.co/accidentes#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://antioquia.opendata.co/accidentes#"
+     versionIRI="http://antioquia.opendata.co/1.00">
+    <Prefix name="" IRI="file:/C:/Users/algutier/Documents/catalog-v001.xml"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <ObjectProperty IRI="localiza"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="tieneUna"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Nom2"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="carrera"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Acc2"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Momento"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Mom2"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="disenno"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Accidente"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="X"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="identificador"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="clase"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="periodo"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="barrio"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Nom1"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="fecha"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ubicaTiempo"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="ocurreEn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="hora"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="dia"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="determinaEl"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="calle"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Acc1"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Ubicacion"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="tipo_geocod"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="sucedeEn"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="ubi1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Mom1"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="radicado"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="Nomenclatura"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="Ubi2"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="Y"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="comuna"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="gravedad"/>
+    </Declaration>
+    <ClassAssertion>
+        <Class IRI="Accidente"/>
+        <NamedIndividual IRI="Acc1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Accidente"/>
+        <NamedIndividual IRI="Acc2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Momento"/>
+        <NamedIndividual IRI="Mom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Momento"/>
+        <NamedIndividual IRI="Mom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Nomenclatura"/>
+        <NamedIndividual IRI="Nom1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Nomenclatura"/>
+        <NamedIndividual IRI="Nom2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Ubicacion"/>
+        <NamedIndividual IRI="Ubi2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="Ubicacion"/>
+        <NamedIndividual IRI="ubi1"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="ocurreEn"/>
+        <NamedIndividual IRI="Acc1"/>
+        <NamedIndividual IRI="ubi1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="sucedeEn"/>
+        <NamedIndividual IRI="Acc1"/>
+        <NamedIndividual IRI="Mom1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="ocurreEn"/>
+        <NamedIndividual IRI="Acc2"/>
+        <NamedIndividual IRI="Ubi2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="sucedeEn"/>
+        <NamedIndividual IRI="Acc2"/>
+        <NamedIndividual IRI="Mom2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="ubicaTiempo"/>
+        <NamedIndividual IRI="Mom1"/>
+        <NamedIndividual IRI="Acc1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="ubicaTiempo"/>
+        <NamedIndividual IRI="Mom2"/>
+        <NamedIndividual IRI="Acc2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="localiza"/>
+        <NamedIndividual IRI="Nom1"/>
+        <NamedIndividual IRI="ubi1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="localiza"/>
+        <NamedIndividual IRI="Nom2"/>
+        <NamedIndividual IRI="Ubi2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="determinaEl"/>
+        <NamedIndividual IRI="Ubi2"/>
+        <NamedIndividual IRI="Acc2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="tieneUna"/>
+        <NamedIndividual IRI="Ubi2"/>
+        <NamedIndividual IRI="Nom2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="determinaEl"/>
+        <NamedIndividual IRI="ubi1"/>
+        <NamedIndividual IRI="Acc1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="tieneUna"/>
+        <NamedIndividual IRI="ubi1"/>
+        <NamedIndividual IRI="Nom1"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="clase"/>
+        <NamedIndividual IRI="Acc1"/>
+        <Literal datatypeIRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#PlainLiteral">Choque</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="gravedad"/>
+        <NamedIndividual IRI="Acc1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">HERIDO</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="identificador"/>
+        <NamedIndividual IRI="Acc1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">348654</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="radicado"/>
+        <NamedIndividual IRI="Acc1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">1567420</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="clase"/>
+        <NamedIndividual IRI="Acc2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Atropello</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="gravedad"/>
+        <NamedIndividual IRI="Acc2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">SOLO DAÑOS</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="identificador"/>
+        <NamedIndividual IRI="Acc2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">348655</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="radicado"/>
+        <NamedIndividual IRI="Acc2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">1567363</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="dia"/>
+        <NamedIndividual IRI="Mom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">VIERNES</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="fecha"/>
+        <NamedIndividual IRI="Mom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2017-01-20T00:00:00.000Z</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hora"/>
+        <NamedIndividual IRI="Mom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">09:00:00 p. m.</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="periodo"/>
+        <NamedIndividual IRI="Mom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">2017</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="dia"/>
+        <NamedIndividual IRI="Mom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">VIERNES</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="fecha"/>
+        <NamedIndividual IRI="Mom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#dateTime">2017-01-20T00:00:00.000Z</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="hora"/>
+        <NamedIndividual IRI="Mom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">03:50:00 p. m.</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="periodo"/>
+        <NamedIndividual IRI="Mom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">2017</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="barrio"/>
+        <NamedIndividual IRI="Nom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">El Chagualo</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="calle"/>
+        <NamedIndividual IRI="Nom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">CL 41 A sur</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="carrera"/>
+        <NamedIndividual IRI="Nom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">CR 60 E</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="comuna"/>
+        <NamedIndividual IRI="Nom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">La Candelaria</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="disenno"/>
+        <NamedIndividual IRI="Nom1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Interseccion</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="barrio"/>
+        <NamedIndividual IRI="Nom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Los Colores</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="calle"/>
+        <NamedIndividual IRI="Nom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">CL 78 B</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="carrera"/>
+        <NamedIndividual IRI="Nom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">CR 80</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="comuna"/>
+        <NamedIndividual IRI="Nom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Laureles Estadio</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="disenno"/>
+        <NamedIndividual IRI="Nom2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Tramo de via</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="X"/>
+        <NamedIndividual IRI="Ubi2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">831935.85</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="Y"/>
+        <NamedIndividual IRI="Ubi2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1184926.36</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="tipo_geocod"/>
+        <NamedIndividual IRI="Ubi2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">EPM sin Interior</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="X"/>
+        <NamedIndividual IRI="ubi1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">834621.14</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="Y"/>
+        <NamedIndividual IRI="ubi1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#double">1184104.18</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="tipo_geocod"/>
+        <NamedIndividual IRI="ubi1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Malla vial</Literal>
+    </DataPropertyAssertion>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="determinaEl"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="ocurreEn"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="sucedeEn"/>
+        <ObjectProperty abbreviatedIRI="owl:topObjectProperty"/>
+    </SubObjectPropertyOf>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="determinaEl"/>
+        <ObjectProperty IRI="ocurreEn"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="localiza"/>
+        <ObjectProperty IRI="tieneUna"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="sucedeEn"/>
+        <ObjectProperty IRI="ubicaTiempo"/>
+    </InverseObjectProperties>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="determinaEl"/>
+        <Class IRI="Ubicacion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="localiza"/>
+        <Class IRI="Nomenclatura"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ocurreEn"/>
+        <Class IRI="Accidente"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="sucedeEn"/>
+        <Class IRI="Accidente"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="tieneUna"/>
+        <Class IRI="Ubicacion"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="ubicaTiempo"/>
+        <Class IRI="Momento"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="determinaEl"/>
+        <Class IRI="Accidente"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="localiza"/>
+        <Class IRI="Ubicacion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ocurreEn"/>
+        <Class IRI="Ubicacion"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="sucedeEn"/>
+        <Class IRI="Momento"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="tieneUna"/>
+        <Class IRI="Nomenclatura"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="ubicaTiempo"/>
+        <Class IRI="Accidente"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="X"/>
+        <Class IRI="Ubicacion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="Y"/>
+        <Class IRI="Ubicacion"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="barrio"/>
+        <Class IRI="Nomenclatura"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="calle"/>
+        <Class IRI="Nomenclatura"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="carrera"/>
+        <Class IRI="Nomenclatura"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="clase"/>
+        <Class IRI="Accidente"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="comuna"/>
+        <Class IRI="Nomenclatura"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="dia"/>
+        <Class IRI="Momento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="disenno"/>
+        <Class IRI="Nomenclatura"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="fecha"/>
+        <Class IRI="Momento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="gravedad"/>
+        <Class IRI="Accidente"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="hora"/>
+        <Class IRI="Momento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="identificador"/>
+        <Class IRI="Accidente"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="periodo"/>
+        <Class IRI="Momento"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="radicado"/>
+        <Class IRI="Accidente"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="tipo_geocod"/>
+        <Class IRI="Ubicacion"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="X"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="Y"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="barrio"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="calle"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="carrera"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="clase"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="comuna"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="dia"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="disenno"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="fecha"/>
+        <Datatype abbreviatedIRI="xsd:dateTime"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="gravedad"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="hora"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="identificador"/>
+        <Datatype abbreviatedIRI="xsd:long"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="periodo"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="radicado"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="tipo_geocod"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
