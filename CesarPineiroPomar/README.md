@@ -24,19 +24,7 @@ Los datos manejados pertenecen al sector de turismo de la Junta de Castilla y Le
 
  El dataset solo esta disponible en formato csv(del inglés comma-separated values), como su nombre indica es un formato para almacenar tablas donde las columnas están separadas con comas y las filas por cambios de línea. Existe una variación del formato csv que hace uso de punto y coma en lugar de coma, esta variación es debido a que en algunos casos, existen columnas formadas por números decimales hacen uso de comas para separar la parte entera de la parte fraccional y es necesario especificar un separador de columnas distinto. Este dataset contiene 22 columnas separadas por puntos y coma y esta almacenado usando la codificación ISO-8859-1.
 
- La licencia de la fuente de datos esta accesible mediante un link en la propia web de descarga. La licencia indica las condiciones que debemos aceptar hacer una obra derivada, explotar los datos y si la misma lo permite, obtener un beneficio económico de ello. La fuente de datos usa la licencia [![Creative Commons License](https://i.creativecommons.org/l/by/3.0/80x15.png "Creative Commons License")](http://creativecommons.org/licenses/by/3.0/ "Creative Commons License") la cual tiene los siguientes derechos y obligaciones.
-
-- **Reconocimiento**: Se debe dar a conocer adecuadamente la autoría de la obra, proporcionar un enlace a la licencia e indicar si se han realizado cambios.
-
-- **Compartir**: Se permite copiar y redistribuir el material en cualquier medio o formato.
-
-- **Transformación**: Se permite remezclar, transformar y crear a partir del material.
-
-- **Obras Derivadas**: Se permiten obras derivadas y con una licencia diferente.
-
-- **Comercial**: Se permite la explotación de la obra incluso para fines comerciales de los que se obtenga beneficio económico.
-
-A continuacion se realizara el analisis de la fuente de datos columna por columna.
+La estructura de los datos por columnas en la fuente de datos es el siguiente: 
 
 Nombre  |  Tipo  |  Valores Vacíos  |  Valores Repetidos  |  Valor Ejemplo  |  Descripción
 :------------:  |  :------------:  |  :------------:  |  :------------:  |  :------------:  |  :------------
@@ -63,14 +51,28 @@ GPS.Longitud | Float | Si | No | -4,056811 | Longitud GPS de la ubicación físi
 GPS.Latitud | Float | Si | No | 40,909942 | Latitud GPS de la ubicación física
 accesibles a minusválidos | String | Si | Si | Si | Contiene  'Si'  en todos los alojamientos que son accesibles por personas minusválidas
 
+ La licencia de la fuente de datos esta accesible mediante un link en la propia web de descarga. La licencia indica las condiciones que debemos aceptar hacer una obra derivada, explotar los datos y si la misma lo permite, obtener un beneficio económico de ello. La fuente de datos usa la licencia [![Creative Commons License](https://i.creativecommons.org/l/by/3.0/80x15.png "Creative Commons License")](http://creativecommons.org/licenses/by/3.0/ "Creative Commons License") la cual tiene los siguientes derechos y obligaciones.
+
+- **Reconocimiento**: Se debe dar a conocer adecuadamente la autoría de la obra, proporcionar un enlace a la licencia e indicar si se han realizado cambios.
+
+- **Compartir**: Se permite copiar y redistribuir el material en cualquier medio o formato.
+
+- **Transformación**: Se permite remezclar, transformar y crear a partir del material.
+
+- **Obras Derivadas**: Se permiten obras derivadas y con una licencia diferente.
+
+- **Comercial**: Se permite la explotación de la obra incluso para fines comerciales de los que se obtenga beneficio económico.
+
+Las licencias Crative Commons, el autor autoriza el uso de su obra, pero la obra continúa estando protegida, por esa razón se ha optado por mantener el mismo tipo de licencia en su versión 4.
+
 #### 2.3 Estrategia de nombrado
 
 A continuación se pasa a describir la estrategia de nombrado donde se explica cómo se van a nombrar los recursos tanto del vocabulario a desarrollar como de los datos a generar.
 
 - **Dominio**: El dominio elegido como base para la aplicación es http://alojamientoshoteleros.es
-- **Formato**: Para definir el acceso a los recursos de nuestra aplicación es necesario elegir el formato de URI a utilizar. En este caso, contamos con un conjunto amplio de datos que podrían ser actualizado en el futuro con nuevos elementos, por esa razón los elementos serán direccionados por la barra inclinada " /".
+- **Formato**: Para definir el acceso a los recursos de nuestra aplicación es necesario elegir el formato de URI a utilizar. En este caso, contamos con un conjunto amplio de datos que podrían ser actualizado en el futuro con nuevos elementos, por esa razón los elementos serán direccionados por la barra inclinada "/".
 - **Ruta**: Los elementos se accederán desde http://alojamientoshoteleros.es/alojamiento
-- **Patrón**: Los elementos deben seguir el patrón http://alojamientoshoteleros.es/alojamiento/<identificador>
+- **Patrón**: Los elementos deben seguir el patrón http://alojamientoshoteleros.es/alojamiento/&lt; identificador >
 
 #### 2.4 Desarrollo del vocabulario
 
@@ -107,8 +109,8 @@ Analizando cada uno de los requisitos funcionales se han extraído una lista de 
 
 Para el desarrollo de la ontología se han utilizado las ontologías vcard, owl, rdf y rdfs que tienen un alto nivel de utilización y permitirán que nuestros datos estén en un modelo lo más estándar posible. Para los detalles más concretos que escapan del alcance de estas ontologías, se han usado ontologías provenientes de la dbpedia por ser una fuente de datos ampliamente usada y con una fuerte comunidad detrás de ella. Para conceptualizar nuestro sistema se han usado las siguientes propiedades.
 
-| Nombre | Ontologia | Acceso | Prefijo
-| ------------ | ------------ | ------------ |
+Nombre | Ontologia | Acceso | Prefijo
+| ------------ | ------------ | ------------ | ------------ |
 | vcard | http://www.w3.org/2006/vcard/ns | # | vcard
 | owl | http://www.w3.org/2002/07/owl | # | owl
 | rdf | http://www.w3.org/1999/02/22-rdf-syntax-ns  | # | rdf
@@ -117,7 +119,7 @@ Para el desarrollo de la ontología se han utilizado las ontologías vcard, owl,
 | dbpedia | http://dbpedia.org/ontology | / | db
 
 | Termino  | Tipo  | Propiedad
-| ------------ | ------------ |
+| ------------ | ------------ | ------------ |
 | Nombre |  xsd:string | rdfs:label
 |  Tipo |  vcard:category  | vcard:hasCategory
 |  Categoria  |  xsd:float | db:starRating
