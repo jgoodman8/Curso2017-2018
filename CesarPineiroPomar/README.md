@@ -68,31 +68,66 @@ accesibles a minusválidos | String | Si | Si | Si | Contiene  'Si'  en todos lo
 A continuación se pasa a describir la estrategia de nombrado donde se explica cómo se van a nombrar los recursos tanto del vocabulario a desarrollar como de los datos a generar.
 
 - **Dominio**: El dominio elegido como base para la aplicación es http://alojamientoshoteleros.es
-- **Formato**: Para definir el acceso a los recursos de nuestra aplicación necesario elegir el formato de URI a utilizar. En este caso, contamos con un conjunto amplio de datos que podría ser actualizado en el futuro con nuevos elementos, por esa razón los elementos serán direccionados por la barra inclinada " /".
+- **Formato**: Para definir el acceso a los recursos de nuestra aplicación es necesario elegir el formato de URI a utilizar. En este caso, contamos con un conjunto amplio de datos que podrían ser actualizado en el futuro con nuevos elementos, por esa razón los elementos serán direccionados por la barra inclinada " /".
 - **Ruta**: Los elementos se accederán desde http://alojamientoshoteleros.es/alojamiento
-- **Patrón**: Los elementos deben seguir el patrón http://alojamientoshoteleros.es/alojamiento/&lt;identificador>
+- **Patrón**: Los elementos deben seguir el patrón http://alojamientoshoteleros.es/alojamiento/<identificador>
 
 #### 2.4 Desarrollo del vocabulario
 
-##### 2.4.1 Deficion de los requisitos
+#### 2.4.1 Deficion de los requisitos
 Los requisitos en una aplicación pueden separarse en funcionales y no funcionales. Los requisitos funcionales. Los requisitos funcionales definen una función que debe implementar o dar soporte el sistema, mientras que los requisitos no funcionales son criterios o restricciones que debe cumplir el sistema.
+
 **Requistios funcionales:**
 - RF1: ¿Qué tipos de Alojamientos hay?
 - RF2: ¿Qué alojamientos hay en una provincia?, ¿Y en una localidad?
 - RF3: Datos de contacto (Teléfono, email y web) de un Alojamiento
 - RF4: Dirección de un Alojamiento
 - RF5: Categoría de un alojamiento
-- RF6: Alojamientos adaptados para minusválidos
+- RF6: Accesible para minusválidos
 
 **Requistios no funcionales:**
 - RNF1: Las ontologías usadas deben estar estandarizadas
 - RNF2: Los datos deben estar enlazados con la dbpedia
 
-##### 2.4.2 Extracción de los términos
-Analizando cada uno de los requisitos funcionales se han extraído una lista de los términos necesarios para modelar el sistema.
-- T1: 
+#### 2.4.2 Extracción de los términos
+Analizando cada uno de los requisitos funcionales se han extraído una lista de los términos necesarios para modelar el sistema:
 
-##### 2.4.3 Identificacion y selección de Ontologias
+- **Alojamiento**: Lugar en el que se hospeda temporalmente una persona.
+- **Tipo**: Nombre del tipo de alojamiento: Hotel, Apartamento…
+- **Categoría**: Tiene como objetivo darte una manera rápida de determinar las amenidades de un hotel mediante una clasificación basada en estrellas.
+- **Dirección**: Indicación precisa del lugar donde vive una persona o se encuentra un edificio, establecimiento.
+- **Provincia**: División territorial con carácter administrativo dentro de un estado.
+- **Localidad**: Una división administrativa o territorial formada por un núcleo de población, ya sea una aldea, pueblo, ciudad...
+- **Teléfono**: Numero para llamar al responsable del teléfono.
+- **Email**: Dirección virtual para enviar correo a través de internet.
+- **Web**: es un documento o información electrónica capaz de contener texto, sonido, vídeo, programas, enlaces, imágenes y muchas otras cosas, adaptada para la llamada World Wide Web (WWW) y que puede ser accedida mediante un navegador web.
+- **Accesible para minusválidos**: Avisa de lugares con accesos adaptados especialmente para usuarios de sillas de ruedas, pero también para otros problemas de movilidad.
+
+#### 2.4.3 Identificacion y selección de Ontologias
+
+Para el desarrollo de la ontología se han utilizado las ontologías vcard, owl, rdf y rdfs que tienen un alto nivel de utilización y permitirán que nuestros datos estén en un modelo lo más estándar posible. Para los detalles más concretos que escapan del alcance de estas ontologías, se han usado ontologías provenientes de la dbpedia por ser una fuente de datos ampliamente usada y con una fuerte comunidad detrás de ella. Para conceptualizar nuestro sistema se han usado las siguientes propiedades.
+
+| Nombre | Ontologia | Acceso | Prefijo
+| ------------ | ------------ | ------------ |
+| vcard | http://www.w3.org/2006/vcard/ns | # | vcard
+| owl | http://www.w3.org/2002/07/owl | # | owl
+| rdf | http://www.w3.org/1999/02/22-rdf-syntax-ns  | # | rdf
+| rdfs |http://www.w3.org/2000/01/rdf-schema  | # | rdfs
+|xsd |http://www.w3.org/2001/XMLSchema| # | xsd
+| dbpedia | http://dbpedia.org/ontology | / | db
+
+| Termino  | Tipo  | Propiedad
+| ------------ | ------------ |
+| Nombre |  xsd:string | rdfs:label
+|  Tipo |  vcard:category  | vcard:hasCategory
+|  Categoria  |  xsd:float | db:starRating
+| Dirección | vcard:street-address | vcard:hasStreetAddress
+| Provincia | vcard:region | vcard:hasRegion
+| Localidad | vcard:locality | vcard:hasLocality
+| Teléfono | vcard:tel | vcard:hasTelephone
+| Email | vcard:email | vcard:hasEmail
+| Web | vcard:url | vcard:hasURL
+| Accesible para <br>minusválidos | xsd:boolean  | db:isHandicappedAccessible
 
 #### 2.5 Proceso de Transformación
 
