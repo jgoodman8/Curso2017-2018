@@ -192,21 +192,21 @@ PREFIX vcard: <http://www.w3.org/2006/vcard/ns#>
 PREFIX db: <http://dbpedia.org/ontology/>
 """
 try:
-	while True:
-		try:
-			print(prefix)
-			print("SparQL>", end="", flush=True)
-			query = prefix + "\n".join(sys.stdin.readlines())
-			for i, result in enumerate(graph.query(query)):
-				print (str(i + 1)+":\t"+str(', '.join(map(lambda x : x or "",result))))
-		except Exception as ex:
-			print(ex)
+    while True:
+        try:
+            print(prefix)
+            print("SparQL>", end="", flush=True)
+            query = prefix + "\n".join(sys.stdin.readlines())
+            for i, result in enumerate(graph.query(query)):
+                print (str(i + 1)+":\t"+str(', '.join(map(lambda x : x or "",result))))
+        except Exception as ex:
+            print(ex)
 except:
-	print("\nAborting...")
+    print("\nAborting...")
 ```
 El script permite hace consultas SPARQL contra el fichero ‘alojamientoshoteleros.ttl’ que contiene el RDF, los PREFIX usados en su creación han sido declarados por defecto para simplificar el texto a introducir en las consultas.
 
-A continuación se muestran varias consultas SPARQL, algunas basadas en los requisitos funcionales y otras un poco más complejas.
+A continuación se muestran varias consultas SPARQL, algunas basadas en los requisitos funcionales y otra poco más complejas.
 
 - RF1: ¿Qué tipos de Alojamientos hay?
 
@@ -293,10 +293,48 @@ ORDER BY asc(?nombre)
 1:      ANTONIO, Hotel, 975300711; 607901635, hotel@hotelantonio.net, www.hotelantonio.net
 2:      ANTONIO, Hostal, 975385145; 975385066, ,
 ```
-En este caso hay dos aljamientos con el mismo nombre, el primero tiene todos los datos pero el segundo carece de correo y pagina web.
+En este caso hay dos alojamientos con el mismo nombre, el primero tiene todos los datos, pero el segundo carece de correo y página web.
 
+- Alojamientos de la provincia de Ávila con mas de 3 Estrellas y con acceso para minusválidos junto con su teléfono para realizar una reserva. 
+
+```
+SELECT ?nombre ?tipo ?telef ?star ?acceso
+WHERE {
+	?al rdfs:label ?nombre .
+	?al vcard:hasCategory ?tipo .
+	?al vcard:hasRegion ?provincia .
+	OPTIONAL {?al vcard:hasTelephone ?telef} .
+	?al db:isHandicappedAccessible ?acceso .
+	?al db:starRating ?star .
+	FILTER(?star > 3) .
+	FILTER(str(?provincia) = "Ávila") .
+}
+ORDER BY asc(?nombre)
+```
+
+```
+1:      CUATRO POSTES, Hotel, 920220000; 669403083, 4, Si
+2:      EL ENCANTO, Hotel, 920337805, 4, Si
+3:      EL RONDON, Hotel, 918630460; 609223033, 4, Si
+4:      FONTECRUZ AVILA, Hotel, 920359200; 914295330, 4, Si
+5:      II CASTILLAS, Hotel, 920219237, 4, Si
+6:      MIRADOR DE GREDOS, Hotel, 920500040, 4, Si
+7:      PALACIO DE VALDERRABANOS, Hotel, 920211023; 617960035, 4, Si
+8:      PARADOR RAIMUNDO DE BORGOÑA, Hotel, 920211340, 4, Si
+9:      PUERTA DE GREDOS, Hotel, 920345171, 4, Si
+```
 
 
 ### 4 Conclusiones
 
+La tarea de enlazado de datos permite, mediante uso de vocabularios estandarizados, convertir un conjunto de datos aislados heterogéneos a un formato común el cual permite la relación entre ellos. En el desarrollo de esta practica,mediante la herramienta Openrefine, se ha convertido una fuente de datos en formato csv a un conjunto de datos enlazados con la DBpedia en formato RDF.
+
+En la realización de este proceso, la tarea mas complicada ha sido realizar un correcto enlazado de los datos. La conciliación de datos entre una fuente de datos local y otra remota, en este caso la DBpedia, es un proceso lento debido a alto numero de peticiones con su latencia asociada.
+
+Existen también una serie de problemas asociados al enlazados de datos, distintos autores pueden usar variaciones de una misma palabra, no siempre correctas, a la hora de nombrar un elemento. En el caso del enlazado de provincias, la omisión de algún acento, ha dificultado el enlazado automático.
+
 ### 5 Bibliografía
+- Apuntes y vídeos de la asignatura.
+- Web OpenRefine,  http://openrefine.org, [Online, último acceso Junio 2018].
+- LOV Buscador Ontologias, http://lov.okfn.org, [Online, último acceso Junio 2018].
+- SPARQL sobre RDF, https://www.w3.org/TR/rdf-sparql-query/ , [Online, último acceso Junio 2018].
