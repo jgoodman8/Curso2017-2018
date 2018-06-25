@@ -1,4 +1,4 @@
-# Transformación y explotación de datos históricos de FIFA Word Cup
+# Transformación y explotación de datos históricos de la FIFA Word Cup
 
 #### Javier Guzmán Figueira Domínguez - javier.figueira@posgrado.uimp.es
 
@@ -47,8 +47,8 @@
 ### <a name="#link"/>f. Enlazado</a>
 ### <a name="#publish"/>g. Publicación</a>
 
-### <a name="publish"/>3. Aplicación y explotación</a>
+## <a name="publish"/>3. Aplicación y explotación</a>
 
-### <a name="conclusions"/>4. Conclusiones</a>
+## <a name="conclusions"/>4. Conclusiones</a>
 
-### <a name="references"/>5. Bibliografía</a>
+## <a name="references"/>5. Bibliografía</a>
