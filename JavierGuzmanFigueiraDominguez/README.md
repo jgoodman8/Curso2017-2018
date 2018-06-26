@@ -71,10 +71,58 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 
 #### Ediciones
 
+Propiedad       | Tipo     | Ejemplo       | Descripción                  
+----------------|----------|---------------|------------------------------
+Year            | Date     | 1930          | Año de disputa del campeonato
+Country         | String   | Uruguay       | País anfitrión del campeonato
+Winner          | String   | Uruguay       | Nombre del equipo vencendor
+Runners-Up      | String   | Argentina     | Nombre del equipo que terminó en segundo lugar
+Thrid           | String   | USA           | Nombre del equipo que terminó en tercer lugar
+Fourth          | String   | Yugoslavia    | Nombre del equipo que terminó en cuarto lugar
+GoalsScored     | Integer  | 70            | Número total de goles anotados en el torneo
+QualifiedTeams  | Integer  | 13            | Número total de equipos clasificados para el torneo
+MatchesPlayed   | Integer  | 18            | Número total de partidos disputados
+Attendance      | Integer  | 590.549       | Número total de asistentes a lo largos del torneo
 
 #### Jugadores
 
+Propiedad       | Tipo     | Ejemplo             | Descripción                  
+----------------|----------|---------------------|------------------------------
+RoundID         | String   | 201                 | Identificador de la ronda
+MatchID         | String   | 1096                | Identificador del partido
+Team Initials   | String   | FRA                 | Iniciales del equipo
+CoachName       | String   | CAUDRON Raoul (FRA) | Nombre e iniciales de la nacionalidad del entrenador
+Line-up         | Boolean  | S                   | Presencia en el equipo titular
+Shirt Number    | Integer  | 0                   | Número de camiseta
+Player Name     | String   | Andre MASCHINOT     | Nombre del jugador
+Position        | String   | C                   | Posición en el campo (únicamente se muestra si el jugador es portero, capitán o ambos)
+Event           | Array    | G43' G87'           | Eventos relacionados con el jugador durante el partido (goles, tarjetas, penalties ...)
+
 #### Partidos
+
+Propiedad            | Tipo     | Ejemplo                     | Descripción                  
+---------------------|----------|-----------------------------|------------------------------
+Year                 | Date     | 1930                        | Año de disputa del partido
+Datetime             | Date     | 13 Jul 1930 - 15:00         | La fecha y hora a la que se comenzó a jugar el partido.
+Stage                | String   | Group 1                     | Fase o grupo en el que se jugó el partido
+Stadium              | String   | Pocitos                     | Nombre del estadio en que celebró el enfrentamiento
+City                 | String   | Montevideo                  | Nombre del equipo que terminó en tercer lugar
+Home Team Name       | String   | France                      | Nombre del equipo que disputó el partido jugando como local
+Home Team Goals      | Integer  | 4                           | Goles anotados por el equipo local
+Away Team Goals      | Integer  | 1                           | Goles anotados por el equipo visitante
+Away Team Name       | String   | Mexico                      | Nombre del equipo que disputó el partido jugando como visitante
+Win conditions       | String   | France win after extra time | Condiciones especiales de la victoria (tiempo extra, penalties...)
+Attendance           | Intenger | 4444                        | Número total de asistentes al partido
+Half-time Home Goals | Intenger | 3                           | Goles anotados por el equipo local, al término de la primera parte
+Half-time Away Goals | Intenger | 0                           | Goles anotados por el equipo vistante, al término de la primera parte
+Referee              | String   | LOMBARDI Domingo (URU)      | Nombre e iniciales de la nacionalidad del árbitro principal
+Assistant 1          | String   | CRISTOPHE Henry (BEL)       | Nombre e iniciales de la nacionalidad del primer asistente arbitral
+Assistant 2          | String   | REGO Gilberto (BRA)         | Nombre e iniciales de la nacionalidad del segundo asistente arbitral
+RoundID              | String   | 201                         | Identificador de la ronda
+MatchID              | String   | 1086                        | Identificador del partido
+Home Team Initials   | String   | FRA                         | Iniciales del nombre del equipo que disputó el partido jugando como local
+Away Team Initials   | String   | MEX                         | Iniciales del nombre del equipo que disputó el partido jugando como visitante
+
 
 #### Licencia
 
@@ -86,17 +134,15 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 
 &nbsp;&nbsp;&nbsp;&nbsp;Tal y como se puede observar, la distribución por medio de este tipo de licencia se asemeja mucho a la *No licencia* o *Unlicense*. *CC0* permite a todo tipo de creadores y propietarios de contenido protegido por derechos de autor o de bases de datos (como es este caso) renunciar a cualquier interés sobre los mismos y liberalos al dominio público. De esta manera, cualquiera puede utilizar tales materiales para cualquier fin, sin restricciones. A diferencia de [Etiqueta de Dominio Público](https://creativecommons.org/share-your-work/public-domain/pdm/), *CC0* no se debe usar para etiquetar obras ya liberadas de restricciones de derechos de autor y de bases de datos que sea de dominio público en todo el mundo.
 
-&nbsp;&nbsp;&nbsp;&nbsp;La licencia *CC0* del conjunto de datos permite asignar cualquier licencia a los materiales derivados de los mismos. Por lo tanto, no hay restricciones en tal aspecto. Tanto la presente memoria, como los datos enlazados generados y la aplicación aqui presentada, se comparten utilizando la licencia [CC BY](https://creativecommons.org/licenses/by/4.0/). Se ha elegido este tipo de licencia dado que es la modalidad menos restrictiva que obliga al reconocimiento de autoría.
-
-&nbsp;&nbsp;&nbsp;&nbsp;Esta licencia permite:
+&nbsp;&nbsp;&nbsp;&nbsp;La licencia *CC0* del conjunto de datos permite asignar cualquier licencia a los materiales derivados de los mismos. Por lo tanto, no hay restricciones en tal aspecto. Tanto la presente memoria, como los datos enlazados generados y la aplicación aqui presentada, se comparten utilizando la licencia [CC BY](https://creativecommons.org/licenses/by/4.0/). Se ha elegido este tipo de licencia dado que es la modalidad menos restrictiva que obliga al reconocimiento de autoría.Esta licencia permite:
   - La libre distribución de la obra mediante cualquier formato o medio.
   - La modificación o transformación total o parcial del material.
   - La distribución con propósitos comerciales.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
-    - Reconocimiento adecuado de la autoría del material.
-    - Proporcionar un enlace a la licencia elegida.
-    - Indicación de los cambios realizados sobre el material original.
+Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
+  - Reconocimiento adecuado de la autoría del material.
+  - Proporcionar un enlace a la licencia elegida.
+  - Indicación de los cambios realizados sobre el material original.
 
 ### <a name="strategy"/>2.3. Estrategia de nombrado</a>
 
