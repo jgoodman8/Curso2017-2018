@@ -91,7 +91,7 @@ Propiedad       | Tipo     | Ejemplo             | Descripción
 RoundID         | String   | 201                 | Identificador de la ronda
 MatchID         | String   | 1096                | Identificador del partido
 Team Initials   | String   | FRA                 | Iniciales del equipo
-CoachName       | String   | CAUDRON Raoul (FRA) | Nombre e iniciales de la nacionalidad del entrenador
+CoachName       | String   | CAUDRON Raoul (FRA) | Nombre del entrenador e iniciales de su nacionalidad
 Line-up         | Boolean  | S                   | Presencia en el equipo titular
 Shirt Number    | Integer  | 0                   | Número de camiseta
 Player Name     | String   | Andre MASCHINOT     | Nombre del jugador
@@ -115,13 +115,13 @@ Win conditions       | String   | France win after extra time | Condiciones espe
 Attendance           | Intenger | 4444                        | Número total de asistentes al partido
 Half-time Home Goals | Intenger | 3                           | Goles anotados por el equipo local, al término de la primera parte
 Half-time Away Goals | Intenger | 0                           | Goles anotados por el equipo vistante, al término de la primera parte
-Referee              | String   | LOMBARDI Domingo (URU)      | Nombre e iniciales de la nacionalidad del árbitro principal
-Assistant 1          | String   | CRISTOPHE Henry (BEL)       | Nombre e iniciales de la nacionalidad del primer asistente arbitral
-Assistant 2          | String   | REGO Gilberto (BRA)         | Nombre e iniciales de la nacionalidad del segundo asistente arbitral
+Referee              | String   | LOMBARDI Domingo (URU)      | Nombre del árbitro principal e iniciales de su nacionalidad 
+Assistant 1          | String   | CRISTOPHE Henry (BEL)       | Nombre del primer asistente arbitral e iniciales de su nacionalidad
+Assistant 2          | String   | REGO Gilberto (BRA)         | Nombre del segundo asistente arbitral e iniciales de su nacionalidad
 RoundID              | String   | 201                         | Identificador de la ronda
 MatchID              | String   | 1086                        | Identificador del partido
-Home Team Initials   | String   | FRA                         | Iniciales del nombre del equipo que disputó el partido jugando como local
-Away Team Initials   | String   | MEX                         | Iniciales del nombre del equipo que disputó el partido jugando como visitante
+Home Team Initials   | String   | FRA                         | Iniciales del equipo que disputó el partido jugando como local
+Away Team Initials   | String   | MEX                         | Iniciales del equipo que disputó el partido jugando como visitante
 
 
 #### Licencia
