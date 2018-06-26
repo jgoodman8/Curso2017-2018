@@ -61,7 +61,7 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 
 &nbsp;&nbsp;&nbsp;&nbsp;Haciendo un análisis preliminar del conjunto de datos, se puede observar como éstos contienen referencias a jugadores, fechas y localizaciones (con referencias a ciudades, estadios y países). Por consiguiente, estas potenciales referencias convierten a este conjunto de datos en un candidato idoneo para su transformación a datos enlazados.
 
-&nbsp;&nbsp;&nbsp;&nbsp;Como indica la plataforma, estos datos han sido cedidos por cortería de la página web del [Archivo de la Copa del Mundo de la FIFA](https://www.fifa.com/fifa-tournaments/archive/index.html).
+&nbsp;&nbsp;&nbsp;&nbsp;Como se indica en la plataforma _Kaggle_, estos datos han sido cedidos por cortería de la página web del [Archivo de la Copa del Mundo de la FIFA](https://www.fifa.com/fifa-tournaments/archive/index.html).
 
 ### <a name="analysis"/>2.2. Análisis de los datos</a>
 
@@ -70,6 +70,12 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 &nbsp;&nbsp;&nbsp;&nbsp;Tal y como se ha indicado en la subsección anterior, el conjunto de datos continene tres ficheros en formato CSV. Por consiguiente, el objetivo de esta sección consitirá en analizar el tipo de datos manejados en cada uno de los ficheros y sus características. Así mismo, se analizará la licencia bajo la que se han distribuido estos datos y se in justificará la licencia elegida en los datos aquí transformados.
 
 #### Ediciones
+
+&nbsp;&nbsp;&nbsp;&nbsp;El archivo _WorldCups.csv_ del conjunto de datos contiene la información referente a cada una de las ediciones celebradas de la copa del mundo. Dado que se han celebrado un total de 20 campeonatos, este el número de instancias que contiene este fichero. Además, no se aprecian valores nulos o perdidos en este conjunto. Para la definición del vocabulario, tienen relevancia las caraterísticas referentes al país de celebración del evento y las referencias a países que ocuparon los primeros lugares en el torneo.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A continuación, se detallan cada una de las caraterísticas de los datos relacionados con las ediciones:
+<br/>
+<br/>
 
 Propiedad       | Tipo     | Ejemplo       | Descripción                  
 ----------------|----------|---------------|------------------------------
@@ -84,21 +90,13 @@ QualifiedTeams  | Integer  | 13            | Número total de equipos clasificad
 MatchesPlayed   | Integer  | 18            | Número total de partidos disputados
 Attendance      | Integer  | 590.549       | Número total de asistentes a lo largos del torneo
 
-#### Jugadores
-
-Propiedad       | Tipo     | Ejemplo             | Descripción                  
-----------------|----------|---------------------|------------------------------
-RoundID         | String   | 201                 | Identificador de la ronda
-MatchID         | String   | 1096                | Identificador del partido
-Team Initials   | String   | FRA                 | Iniciales del equipo
-CoachName       | String   | CAUDRON Raoul (FRA) | Nombre del entrenador e iniciales de su nacionalidad
-Line-up         | Boolean  | S                   | Presencia en el equipo titular
-Shirt Number    | Integer  | 0                   | Número de camiseta
-Player Name     | String   | Andre MASCHINOT     | Nombre del jugador
-Position        | String   | C                   | Posición en el campo (únicamente se muestra si el jugador es portero, capitán o ambos)
-Event           | Array    | G43' G87'           | Eventos relacionados con el jugador durante el partido (goles, tarjetas, penalties ...)
-
 #### Partidos
+
+&nbsp;&nbsp;&nbsp;&nbsp;El archivo _WorldCupPlayers.csv_ contiene información relacionada con los partidos que se han jugado en cada una de las ediciones de la copa del mundo. Esta sección del conjunto de datos contiena un total de 4572 instancias. Cada una de estas instancias, se identifican mediante un identificador de ronda ("RoundID") y un identificador de partido ("MatchID"). Aunque estos indicadores son de tipo numérico (sólo contienen cifras), se tratarán con cadenas de texto al tratarse de códigos sin propiedades numéricas. Cabe mencionar, que tienen especial relevancia los datos relacionados con lugares como países, ciudades, estadios y las referencias a los nombre y nacionalidades de los árbitros de cada partido.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A continuación, se detallan cada una de las caraterísticas de los datos relacionados con los partidos jugados:
+<br/>
+<br/>
 
 Propiedad            | Tipo     | Ejemplo                     | Descripción                  
 ---------------------|----------|-----------------------------|------------------------------
@@ -112,7 +110,7 @@ Home Team Goals      | Integer  | 4                           | Goles anotados p
 Away Team Goals      | Integer  | 1                           | Goles anotados por el equipo visitante
 Away Team Name       | String   | Mexico                      | Nombre del equipo que disputó el partido jugando como visitante
 Win conditions       | String   | France win after extra time | Condiciones especiales de la victoria (tiempo extra, penalties...)
-Attendance           | Intenger | 4444                        | Número total de asistentes al partido
+Attendance           | Intenger | 4.444                       | Número total de asistentes al partido
 Half-time Home Goals | Intenger | 3                           | Goles anotados por el equipo local, al término de la primera parte
 Half-time Away Goals | Intenger | 0                           | Goles anotados por el equipo vistante, al término de la primera parte
 Referee              | String   | LOMBARDI Domingo (URU)      | Nombre del árbitro principal e iniciales de su nacionalidad 
@@ -123,6 +121,25 @@ MatchID              | String   | 1086                        | Identificador de
 Home Team Initials   | String   | FRA                         | Iniciales del equipo que disputó el partido jugando como local
 Away Team Initials   | String   | MEX                         | Iniciales del equipo que disputó el partido jugando como visitante
 
+#### Jugadores
+
+&nbsp;&nbsp;&nbsp;&nbsp;El archivo _WorldCupMatches.csv_ contiene información relacionada con los jugadores, de cada una de las plantillas, que han disputado partidos en los campeonatos celebrados. Cada una de las instancias de esta porción del dataset tiene una referencia con el partido y la ronda en la que intervino cada jugador. Esta referencia se crea por medio de los identificadores "RoundID" y "MatchID", comentados en el anterior apartado. Así mismo, aquí tendrán relevancia las referencias a los nombres de los jugadores y sus números de camisetas; así como los nombres de los entrenadores y sus nacionalidades.
+
+&nbsp;&nbsp;&nbsp;&nbsp;A continuación, se detallan cada una de las caraterísticas de los datos relacionados con los jugadores de los equipos participantes en cada una de las ediciones:
+<br/>
+<br/>
+
+Propiedad       | Tipo     | Ejemplo             | Descripción                  
+----------------|----------|---------------------|------------------------------
+RoundID         | String   | 201                 | Identificador de la ronda
+MatchID         | String   | 1096                | Identificador del partido
+Team Initials   | String   | FRA                 | Iniciales del equipo
+CoachName       | String   | CAUDRON Raoul (FRA) | Nombre del entrenador e iniciales de su nacionalidad
+Line-up         | Boolean  | S                   | Presencia en el equipo titular
+Shirt Number    | Integer  | 0                   | Número de camiseta
+Player Name     | String   | Andre MASCHINOT     | Nombre del jugador
+Position        | String   | C                   | Posición en el campo (únicamente se muestra si el jugador es portero, capitán o ambos)
+Event           | Array    | G43' G87'           | Eventos relacionados con el jugador durante el partido (goles, tarjetas, penalties ...)
 
 #### Licencia
 
