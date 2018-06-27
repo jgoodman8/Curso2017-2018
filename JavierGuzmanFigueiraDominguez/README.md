@@ -165,6 +165,16 @@ Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
 
 [comment]: # (Estrategia de nombrado, donde se explique cómo se van a nombrar los recursos tanto del vocabulario a desarrollar como de los datos a generar.)
 
+&nbsp;&nbsp;&nbsp;&nbsp;En esta sección, se presenta y justifica la estrategia de nombrado de recursos que utilizaremos, tanto en el vocabulario como en los los datos que trataremos.
+
+&nbsp;&nbsp;&nbsp;&nbsp;En primer lugar, se procede a escoger el formato de las URIs que necesitaremos utilizar. Es vital atender a que el conjunto de individuo que tratamos es bastante amplio y está en crecimiento, con adición de elementos en todos los partidos de nuevas ediciones de la copa. Ergo, se utilizará la barra inclinada o *slash* para referenciar a tales individuos. Por su parte, la ontología debe ser fija y de menor tamaño; por ello, se emplearán el *hash* para designar a los términos ontológicos que definamos
+
+&nbsp;&nbsp;&nbsp;&nbsp;Como dominio de todas URIs que definamos, se elige uno disponible y que tenga cierta relación con el contenido del conjunto de datos enlazados que aquí se generará. Por ejemplo: `http://linkeddata.fifawordcup.org`. Utilizando este domino, se definen las rutas base para individuos `http://linkeddata.fifawordcup.org/resources/`  y ontologías `http://linkeddata.fifawordcup.org/ontology/WordCup#`.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Finalmente, se define el patrón para las clases y propiedades de la ontologías, tal que `http://linkeddata.fifawordcup.org/ontology/WordCup#<term_name>`. De forma que `<term_name>` sea el nombre desinado para cada uno de los términos creados. Así mismo, se utilizará el patrón `http://linkeddata.fifawordcup.org/resources/<resource_name>/<resource_id>` para referirnos a individuos de un tipo `<resource_name>` e identificados por `<resource_id>`. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;Nota: todos los nombres utilizados para designar tanto términos como recursos, estarán en formato [*camel case*](https://eslint.org/docs/rules/camelcase). Esto implicará realizar algunos renombrados en la etapa de transformación del conjunto de datos.
+
 ### <a name="vocabulary"/>2.4. Desarrollo de vocabulario</a>
 
 [comment]: # (Desarrollo del vocabulario, indicando el proceso de implementación del vocabulario y como este soporta los datos de origen. No se exige una ontología compleja, sino un vocabulario suficiente para describir los conceptos y propiedades de los datos a transformar.)
