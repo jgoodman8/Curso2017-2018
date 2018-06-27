@@ -69,7 +69,7 @@ This work is licensed under a <a rel="license" href="http://creativecommons.org/
 
 &nbsp;&nbsp;&nbsp;&nbsp;Tal y como se ha indicado en la subsección anterior, el conjunto de datos continene tres ficheros en formato CSV. Por consiguiente, el objetivo de esta sección consitirá en analizar el tipo de datos manejados en cada uno de los ficheros y sus características. Así mismo, se analizará la licencia bajo la que se han distribuido estos datos y se in justificará la licencia elegida en los datos aquí transformados.
 
-#### Ediciones
+#### 2.2.1. Ediciones
 
 &nbsp;&nbsp;&nbsp;&nbsp;El archivo _WorldCups.csv_ del conjunto de datos contiene la información referente a cada una de las ediciones celebradas de la copa del mundo. Dado que se han celebrado un total de 20 campeonatos, este el número de instancias que contiene este fichero. Además, no se aprecian valores nulos o perdidos en este conjunto. Para la definición del vocabulario, tienen relevancia las caraterísticas referentes al país de celebración del evento y las referencias a países que ocuparon los primeros lugares en el torneo.
 
@@ -90,7 +90,7 @@ QualifiedTeams  | Integer  | 13            | Número total de equipos clasificad
 MatchesPlayed   | Integer  | 18            | Número total de partidos disputados
 Attendance      | Integer  | 590.549       | Número total de asistentes a lo largos del torneo
 
-#### Partidos
+#### 2.2.2. Partidos
 
 &nbsp;&nbsp;&nbsp;&nbsp;El archivo _WorldCupPlayers.csv_ contiene información relacionada con los partidos que se han jugado en cada una de las ediciones de la copa del mundo. Esta sección del conjunto de datos contiena un total de 4572 instancias. Cada una de estas instancias, se identifican mediante un identificador de ronda ("RoundID") y un identificador de partido ("MatchID"). Aunque estos indicadores son de tipo numérico (sólo contienen cifras), se tratarán con cadenas de texto al tratarse de códigos sin propiedades numéricas. Cabe mencionar, que tienen especial relevancia los datos relacionados con lugares como países, ciudades, estadios y las referencias a los nombre y nacionalidades de los árbitros de cada partido.
 
@@ -121,7 +121,7 @@ MatchID              | String   | 1086                        | Identificador de
 Home Team Initials   | String   | FRA                         | Iniciales del equipo que disputó el partido jugando como local
 Away Team Initials   | String   | MEX                         | Iniciales del equipo que disputó el partido jugando como visitante
 
-#### Jugadores
+#### 2.2.3. Jugadores
 
 &nbsp;&nbsp;&nbsp;&nbsp;El archivo _WorldCupMatches.csv_ contiene información relacionada con los jugadores, de cada una de las plantillas, que han disputado partidos en los campeonatos celebrados. Cada una de las instancias de esta porción del dataset tiene una referencia con el partido y la ronda en la que intervino cada jugador. Esta referencia se crea por medio de los identificadores "RoundID" y "MatchID", comentados en el anterior apartado. Así mismo, aquí tendrán relevancia las referencias a los nombres de los jugadores y sus números de camisetas; así como los nombres de los entrenadores y sus nacionalidades.
 
@@ -141,7 +141,21 @@ Player Name     | String   | Andre MASCHINOT     | Nombre del jugador
 Position        | String   | C                   | Posición en el campo (únicamente se muestra si el jugador es portero, capitán o ambos)
 Event           | Array    | G43' G87'           | Eventos relacionados con el jugador durante el partido (goles, tarjetas, penalties ...)
 
-#### Licencia
+#### 2.2.4. Tratamiento del conjunto de datos
+
+&nbsp;&nbsp;&nbsp;&nbsp;Para realizar un tratamiento del conjunto de datos de forma uniforme, se ha de juntar los datos en un único fichero. Para ello, se ha creado un _script_ en R, debido a su sencillez para realizar este tipo de operaciones. En esta operación, se juntan los datos de las ediciones y los partidos, tomando como referenciacomún el año del campeonato _Year_ (único en el conjunto de datos de ediciones). De igual manera, se fusiona esta tabla resultante con los datos de los jugadores, utilizando como referencia común el identificador de partido _MatchID_ (también único en el fichero de partidos). Sin embargo, es necesario eliminar varias columnas vacías e instancias duplicadas en este _dataset_. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;El conjunto de datos resultante se ha guardado en en el archivo nombrado _WordCupData.csv_. Y una vez fusionados todos los archivos, se procede a realizar un análisis y tratamiento global de los datos (para ello se ha utilizado la plataforma [OpenRefine](http://openrefine.org/)). 
+
+&nbsp;&nbsp;&nbsp;&nbsp;En primer lugar, se identifican a que datos son necesarios de cambiar de tipo (dado que todos los datos se tratan inicialmente como cadenas de texto). Como se ha explicado, se ha decidido que los datos que consitan en cifras pero no tengan valor numérico, se considerarán de tipo _string_. Este es el caso de las caraterísticas _MatchID_, _RoundID_ y _ShirtNumber_. Por el contrario, se deben de convertir a numéricas las propiedades _GoalsScored_, _MatchesPlayed_, _TotalAttendance_, _HomeTeamGoals_, _AwayTeamGoals_, _Attendance_, _HalfTimeHomeGoals_ y _HalfTimeVisitorGoals_.
+
+&nbsp;&nbsp;&nbsp;&nbsp;También se procede a transformar y/o generar datos de algunas de las características. Uno de estos datos es el de la fecha y hora de cada partido (denominada _Datetime_), que es necesario transformalo para que tome un formato de tipo _DateTime_ adecuado. Así mismo, los datos de entrenadores y conjuntos arbitrales incluyen tanto sus nombres y apellidos (de forma invertida), como las iniciales de su nacionalidad. Por lo tanto, se han generado nuevas características con estas iniciales (para todas las propiedaes originales afectadas) y se han modificado su nombre para invertir su orden.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se puede apreciar como hay algunas variables con valores vacíos. Por ejemplo, la propiedad _WinConditions_ recoge descripciones de situaciones especiales en victorias (como goles en el tiempo añadido, victorias por penalties) y la propiedad _Position_ que únicamente refleja si un jugador es capitán y/o portero (por lo que es inútil en la mayoría de las instancias). Por su parte, será relevante convertir la propiedad _Line.up_ para que sea de un tipo _boolean_.
+
+[comment]: # (TODO: Completar con otras operaciones realizadas: Posicion? | Event ---> Array/TiposEventos | Records?)
+
+#### 2.2.3. Licencia
 
 &nbsp;&nbsp;&nbsp;&nbsp;El conjunto de datos se ha distribuido bajo la licencia [CC0](https://creativecommons.org/publicdomain/zero/1.0/) o de *Dedicación a Dominio público*. Esto significa que es un tipo de licencia definida por [Creative Commons](https://creativecommons.org/licenses/), una organización sin ánimo de lucro dedicada a facilitar instrumentos jurídicos gratuitos que faciliten tanto usar como compartir todo tipo de conocimiento. En contreto, en la licencia aplicada aquí permite:
 - Uso privado
