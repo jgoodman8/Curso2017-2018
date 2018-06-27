@@ -141,20 +141,6 @@ Player Name     | String   | Andre MASCHINOT     | Nombre del jugador
 Position        | String   | C                   | Posición en el campo (únicamente se muestra si el jugador es portero, capitán o ambos)
 Event           | Array    | G43' G87'           | Eventos relacionados con el jugador durante el partido (goles, tarjetas, penalties ...)
 
-#### 2.2.4. Tratamiento del conjunto de datos
-
-&nbsp;&nbsp;&nbsp;&nbsp;Para realizar un tratamiento del conjunto de datos de forma uniforme, se ha de juntar los datos en un único fichero. Para ello, se ha creado un _script_ en R, debido a su sencillez para realizar este tipo de operaciones. En esta operación, se juntan los datos de las ediciones y los partidos, tomando como referenciacomún el año del campeonato _Year_ (único en el conjunto de datos de ediciones). De igual manera, se fusiona esta tabla resultante con los datos de los jugadores, utilizando como referencia común el identificador de partido _MatchID_ (también único en el fichero de partidos). Sin embargo, es necesario eliminar varias columnas vacías e instancias duplicadas en este _dataset_. 
-
-&nbsp;&nbsp;&nbsp;&nbsp;El conjunto de datos resultante se ha guardado en en el archivo nombrado _WordCupData.csv_. Y una vez fusionados todos los archivos, se procede a realizar un análisis y tratamiento global de los datos (para ello se ha utilizado la plataforma [OpenRefine](http://openrefine.org/)). 
-
-&nbsp;&nbsp;&nbsp;&nbsp;En primer lugar, se identifican a que datos son necesarios de cambiar de tipo (dado que todos los datos se tratan inicialmente como cadenas de texto). Como se ha explicado, se ha decidido que los datos que consitan en cifras pero no tengan valor numérico, se considerarán de tipo _string_. Este es el caso de las caraterísticas _MatchID_, _RoundID_ y _ShirtNumber_. Por el contrario, se deben de convertir a numéricas las propiedades _GoalsScored_, _MatchesPlayed_, _TotalAttendance_, _HomeTeamGoals_, _AwayTeamGoals_, _Attendance_, _HalfTimeHomeGoals_ y _HalfTimeVisitorGoals_.
-
-&nbsp;&nbsp;&nbsp;&nbsp;También se procede a transformar y/o generar datos de algunas de las características. Uno de estos datos es el de la fecha y hora de cada partido (denominada _Datetime_), que es necesario transformalo para que tome un formato de tipo _DateTime_ adecuado. Así mismo, los datos de entrenadores y conjuntos arbitrales incluyen tanto sus nombres y apellidos (de forma invertida), como las iniciales de su nacionalidad. Por lo tanto, se han generado nuevas características con estas iniciales (para todas las propiedaes originales afectadas) y se han modificado su nombre para invertir su orden.
-
-&nbsp;&nbsp;&nbsp;&nbsp;Se puede apreciar como hay algunas variables con valores vacíos. Por ejemplo, la propiedad _WinConditions_ recoge descripciones de situaciones especiales en victorias (como goles en el tiempo añadido, victorias por penalties) y la propiedad _Position_ que únicamente refleja si un jugador es capitán y/o portero (por lo que es inútil en la mayoría de las instancias). Por su parte, será relevante convertir la propiedad _Line.up_ para que sea de un tipo _boolean_.
-
-[comment]: # (TODO: Completar con otras operaciones realizadas: Posicion? | Event ---> Array/TiposEventos | Records?)
-
 #### 2.2.3. Licencia
 
 &nbsp;&nbsp;&nbsp;&nbsp;El conjunto de datos se ha distribuido bajo la licencia [CC0](https://creativecommons.org/publicdomain/zero/1.0/) o de *Dedicación a Dominio público*. Esto significa que es un tipo de licencia definida por [Creative Commons](https://creativecommons.org/licenses/), una organización sin ánimo de lucro dedicada a facilitar instrumentos jurídicos gratuitos que faciliten tanto usar como compartir todo tipo de conocimiento. En contreto, en la licencia aplicada aquí permite:
@@ -186,6 +172,18 @@ Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
 ### <a name="transformation"/>2.5. Proceso de transformación</a>
 
 [comment]: # (Proceso de transformación, justificando qué herramientas se han usado para la transformación de los datos y qué pasos se han seguido para su limpieza y adecuación al resultado esperado.)
+
+&nbsp;&nbsp;&nbsp;&nbsp;Para realizar un tratamiento del conjunto de datos de forma uniforme, se ha de juntar los datos en un único fichero. Para ello, se ha creado un _script_ en R, debido a su sencillez para realizar este tipo de operaciones. En esta operación, se juntan los datos de las ediciones y los partidos, tomando como referenciacomún el año del campeonato _Year_ (único en el conjunto de datos de ediciones). De igual manera, se fusiona esta tabla resultante con los datos de los jugadores, utilizando como referencia común el identificador de partido _MatchID_ (también único en el fichero de partidos). Sin embargo, es necesario eliminar varias columnas vacías e instancias duplicadas en este _dataset_. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;El conjunto de datos resultante se ha guardado en en el archivo nombrado _WordCupData.csv_. Y una vez fusionados todos los archivos, se procede a realizar un análisis y tratamiento global de los datos (para ello se ha utilizado la plataforma [OpenRefine](http://openrefine.org/)). 
+
+&nbsp;&nbsp;&nbsp;&nbsp;En primer lugar, se identifican a que datos son necesarios de cambiar de tipo (dado que todos los datos se tratan inicialmente como cadenas de texto). Como se ha explicado, se ha decidido que los datos que consitan en cifras pero no tengan valor numérico, se considerarán de tipo _string_. Este es el caso de las caraterísticas _MatchID_, _RoundID_ y _ShirtNumber_. Por el contrario, se deben de convertir a numéricas las propiedades _GoalsScored_, _MatchesPlayed_, _TotalAttendance_, _HomeTeamGoals_, _AwayTeamGoals_, _Attendance_, _HalfTimeHomeGoals_ y _HalfTimeVisitorGoals_.
+
+&nbsp;&nbsp;&nbsp;&nbsp;También se procede a transformar y/o generar datos de algunas de las características. Uno de estos datos es el de la fecha y hora de cada partido (denominada _Datetime_), que es necesario transformalo para que tome un formato de tipo _DateTime_ adecuado. Así mismo, los datos de entrenadores y conjuntos arbitrales incluyen tanto sus nombres y apellidos (de forma invertida), como las iniciales de su nacionalidad. Por lo tanto, se han generado nuevas características con estas iniciales (para todas las propiedaes originales afectadas) y se han modificado su nombre para invertir su orden.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se puede apreciar como hay algunas variables con valores vacíos. Por ejemplo, la propiedad _WinConditions_ recoge descripciones de situaciones especiales en victorias (como goles en el tiempo añadido, victorias por penalties) y la propiedad _Position_ que únicamente refleja si un jugador es capitán y/o portero (por lo que es inútil en la mayoría de las instancias). Por su parte, será relevante convertir la propiedad _Line.up_ para que sea de un tipo _boolean_.
+
+[comment]: # (TODO: Completar con otras operaciones realizadas: Posicion? | Event ---> Array/TiposEventos | Records?)
 
 ### <a name="#link"/>2.6. Enlazado</a>
 
