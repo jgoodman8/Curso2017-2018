@@ -199,9 +199,29 @@ Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
 
 [comment]: # (Enlazado, donde se explique qué enlaces se han generado con fuentes externas y mediante qué herramientas.)
 
-### <a name="#publish"/>2.7. Publicación</a>
+&nbsp;&nbsp;&nbsp;&nbsp;En esta sección se describe los aspectos relacionados con el enlazodo de datos con fuentes externas, en el proceso de transformación del conjunto de datos. Para ello, se ha empleado como herramienta el [Servicio de reconciliación de OpenRefine](https://github.com/OpenRefine/OpenRefine/wiki/Reconciliation). Se ha registrado el endpoint _SPARQL_ de la [DBpedia](https://wiki.dbpedia.org/) `https://dbpedia.org/sparql` y se han "reconciliado" los datos con los tipos que mayor número de enlaces en instancias han cubierto.
 
-[comment]: # (Publicación. Opcionalmente, si se ha llevado a cabo la  publicación de los datos, se valorará que se explique cómo se ha llevado a cabo.)
+&nbsp;&nbsp;&nbsp;&nbsp;Se han generado enlaces para los recursos del vocabulario definido, que hagan referencia a personas, lugares o momentos. Estas relaciones se representan, en el fichero RDF generado en formato Turtle, por medio de la propierdad _owl:sameAs_. A continuación, se presentan los tipos escogidos para cada uno de los enlaces externos generados:
+
+| Recurso             | Tipo enlazado
+|---------------------|---------------
+| Country             | `http://www.wikidata.org/entity/Q6256`
+| Referee             | `http://www.wikidata.org/entity/Q5`
+| Referee             | `http://www.wikidata.org/entity/Q5`
+| FirstAssistant      | `http://www.wikidata.org/entity/Q5`
+| CoachName           | `http://www.wikidata.org/entity/Q5`
+| PlayerName          | `http://www.wikidata.org/entity/Q5`
+| HomeTeam            | `https://www.wikidata.org/wiki/Q6256`
+| AwayTeam            | `https://www.wikidata.org/wiki/Q6256`
+| City                | `http://dbpedia.org/ontology/City`
+| Stadium             | `http://dbpedia.org/ontology/Stadium`
+| Winner              | `https://www.wikidata.org/wiki/Q6256`
+| Second              | `https://www.wikidata.org/wiki/Q6256`
+| Third               | `https://www.wikidata.org/wiki/Q6256`
+| Forth               | `https://www.wikidata.org/wiki/Q6256`
+| Year                | `http://dbpedia.org/page/Year`
+
+
 
 ## <a name="publish"/>3. Aplicación y explotación</a>
 
