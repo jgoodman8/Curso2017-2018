@@ -165,7 +165,7 @@ Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
 
 [comment]: # (Estrategia de nombrado, donde se explique cómo se van a nombrar los recursos tanto del vocabulario a desarrollar como de los datos a generar.)
 
-&nbsp;&nbsp;&nbsp;&nbsp;En esta sección, se presenta y justifica la estrategia de nombrado de recursos que utilizaremos, tanto en el vocabulario como en los los datos que trataremos.
+&nbsp;&nbsp;&nbsp;&nbsp;En esta sección, se presenta y justifica la estrategia de nombrado de recursos que utilizaremos, tanto en el vocabulario como en los datos que trataremos.
 
 &nbsp;&nbsp;&nbsp;&nbsp;En primer lugar, se procede a escoger el formato de las URIs que necesitaremos utilizar. Es vital atender a que el conjunto de individuo que tratamos es bastante amplio y está en crecimiento, con adición de elementos en todos los partidos de nuevas ediciones de la copa. Ergo, se utilizará la barra inclinada o *slash* para referenciar a tales individuos. Por su parte, la ontología debe ser fija y de menor tamaño; por ello, se emplearán el *hash* para designar a los términos ontológicos que definamos
 
@@ -178,6 +178,32 @@ Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
 ### <a name="vocabulary"/>2.4. Desarrollo de vocabulario</a>
 
 [comment]: # (Desarrollo del vocabulario, indicando el proceso de implementación del vocabulario y como este soporta los datos de origen. No se exige una ontología compleja, sino un vocabulario suficiente para describir los conceptos y propiedades de los datos a transformar.)
+
+&nbsp;&nbsp;&nbsp;&nbsp;En esta sección se presentan los conceptos clave que se han aplicado para generar la ontología que de soporte a los datos enlazados. 
+
+&nbsp;&nbsp;&nbsp;&nbsp;En primer, se han identificado los recursos principales de los datos: la edición del torneo, el partido y los jugadores. Para representarlos, se han utilizado respectivamente los años de los mundiales (*Year*), los identificadores de partidos (*MatchID*) y los nombre de los jugadores (*PlayerName*); todos ellos únicos.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Partiendo de estos recursos, se han identificado las relaciones con las restantes características del conjunto de datos y que las posible relaciones entre los mismos. Cabe destacar que en el caso de la relación de los jugadores con cada uno de los partidos, el conjunto de datos original no permite realizar una relación directa entre el partido, el país y el jugador. Por consiguiente, cada partido tiene asociado un conjunto de jugadores relacionados con el partido. Y es, a su vez, el jugador el que tiene una relación con el código del país, a través de un nodo en blanco.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Una vez identificadas las relaciones, se han buscado las clases y propiedades en vocabularios existentes que dieran soporte semántico a tales relaciones dibujadas. A continuación, se muestran los orígenes de las ontologías reutilizadas en este vocabulario:
+
+| Prefijo | URI 
+|---------|------
+|geo: | `<http://www.w3.org/2003/01/geo/wgs84_pos#>`
+| schema: | `<http://schema.org/>`
+| fwc: | `<http://linkeddata.fifawordcup.org/ontology/WordCup#>`
+| rdf: | `<http://www.w3.org/1999/02/22-rdf-syntax-ns#>`
+| owl: | `<http://www.w3.org/2002/07/owl#>`
+| gn: | `<http://www.geonames.org/ontology#>`
+| xsd: | `<http://www.w3.org/2001/XMLSchema#>`
+| rdfs: | `<http://www.w3.org/2000/01/rdf-schema#>`
+| event: | `<http://purl.org/NET/c4dm/event.owl#>`
+| sport: | `<http://www.bbc.co.uk/ontologies/sport/>`
+| foaf: | `<http://xmlns.com/foaf/0.1/>`
+
+<br/>
+
+&nbsp;&nbsp;&nbsp;&nbsp;Finalmente, se muestra un diagrama que recoge las relaciones en el vocabulario creado.
 
 ![picture alt](assets/LinkedData.png "Ontology")
 
@@ -227,6 +253,106 @@ Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
 
 [comment]: # (Aplicación y explotación, explicando qué funcionalidades aporta la solución desarrollada y cómo ésta hace uso de los datos y enlaces generados para aportar valor al usuario final. En este punto de deben explicar las queries SPARQL o el código en Jena usado para su implementación.)
 
+&nbsp;&nbsp;&nbsp;&nbsp;En esta sección, se mostrarán algunas formas de explotación de los datos enlazados que se han generado en la sección previa. Esta explotación se realiza por medio de una aplicación *Python*. A continuación se explicarán las funcionalidades que se han implementado y las consultas *SPARQL* que obtienen los datos en cada una de las funcionalidades.
+
+### Información de las ediciones
+
+&nbsp;&nbsp;&nbsp;&nbsp;Para cada una de las ediciones de la copa del mundo, se recuperan los datos del ganador, el país en el que se celebró cada edición y el número total de asistentes durante el torneo. Tanto el ganador, como el país, se recuperan en forma de URI, dado que son recursos de nuestro vocabulario.
+
+```
+  SELECT ?year ?winner ?place ?totalAttendance
+  WHERE { 
+    ?year fwc:isWinner ?winner .
+    ?year event:place ?place .
+    ?year fwc:totalAttendance ?totalAttendance .
+  }
+  ORDER BY ASC(?year)
+```
+
+### Información de los partidos
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se obtiene información relevante de cada uno de los partidos jugados a lo largo del mundial, filtrada por edición. La información recuperada contiene la fecha y hora del enfrentamiento, la cuidad en la que celebró y la asistencia a tal partido. Esta información se puede filtrar por año de edición.
+
+```
+  SELECT ?match ?time ?city ?attendance
+  WHERE {
+    ?year sport:hasMatch ?match .
+    ?match event:time ?time .
+    ?match event:place ?stadium .
+    ?stadium foaf:based_near ?city .
+    ?match fwc:totalAttendance ?attendance .
+    FILTER (?year = <http://linkeddata.fifawordcup.org/resources/Year/2010>)
+  }
+  ORDER BY ASC(?time)
+```
+
+### Listado de equipos
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se presenta un listado de las selecciones que han participado en cada una de las ediciones de los mundiales y su código idenficicador. Para no obtener datos duplicados de los equipos, es necesario eliminar duplicados utilizando el operador `DISTICT`. Aún más relevante es el hecho de que no existe ningún sujeto que contenga completamente todos los idenficadores de países (como se da en el caso del año de edición, por ejemplo). Por consiguiente, para obtener todos los países, se han de obtener todos los que han disputado partidos de local y de visitante. Esto se reliaza mediante el operador `UNION`. Finalmente, los datos se presentan en orden alfabético.
+
+```
+  SELECT DISTINCT ?team ?code
+  WHERE {
+    { 
+      ?match sport:homeCompetitor ?team . 
+      ?team gn:countryCode ?code .
+    } 
+      UNION
+    { 
+      ?match sport:awayCompetitor ?team . 
+      ?team gn:countryCode ?code .
+    }
+  }
+  ORDER BY ASC(?team)
+```
+
+### Ranking de países goleadores
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se recupera el número de goles anotados por cada país a lo largo de todos los partidos de todas las ediciones del mundial. Para obtener esta cantidad es necesario obtener los goles marcados como visitante y como local. De igual forma que en el punto anterior, se utiliza el operador `UNION`. Además, es necesario agrupar los goles anotados por país y sumar tal número de goles. Para ello, se utilizan respetivamente los operadores `GROUP BY` y `SUM`. Finalmente, los datos obenidos se ordenan en número de goles descendente y se presentan los 50 primeros, utilizando el operador `LIMIT`.
+
+```
+  SELECT ?code (SUM(?goals) AS ?sum)
+  WHERE {
+    {
+      ?match sport:homeCompetitor ?team .
+      ?team gn:countryCode ?code .
+      ?match fwc:homeGoals ?goals .
+    }
+      UNION
+    {
+      ?match sport:awayCompetitor ?team .
+      ?team gn:countryCode ?code .
+      ?match fwc:awayGoals ?goals .
+    }
+  }
+  GROUP BY ?team
+  ORDER BY DESC(?sum)
+  LIMIT 50
+```
+
+### Ranking partidos convocados
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se presenta el número de asistencias a un mundial por parte de cada jugador. Para ello, se útiliza nuevamente el operador `GROUP BY`, dado que es necesario agregar los datos utilizando los identificadores de los jugadores como referencia. Sin embargo, aquí se emplea combinado con el operador `COUNT`, ya que únicamente es necesario saber el número de presencias en partidos. Finalmente, los datos obenidos se ordenan en número de convocatorias descendente y se presentan los 50 primeros.
+
+```
+  SELECT ?playerName (COUNT(?playerName) AS ?count)
+  WHERE 
+  {
+    ?player fwc:fullName ?playerName
+  }
+  GROUP BY ?playerName
+  ORDER BY DESC(?count)
+  LIMIT 50
+```
+
 ## <a name="conclusions"/>4. Conclusiones</a>
 
+
+
 ## <a name="references"/>5. Bibliografía</a>
+
+- Material de la asignatura.
+- LOV Buscador Ontologias. http://lov.okfn.org.
+- OpenRefine. http://openrefine.org.
+- RDFLib. https://github.com/RDFLib/rdflib
+- SPARQL. https://www.w3.org/TR/rdf-sparql-query.
