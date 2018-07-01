@@ -25,7 +25,7 @@ class Repository:
         print('Loading data...')
 
         self.graph = Graph()
-        self.graph.parse('../../data/target/word_cup.ttl', format='turtle')
+        self.graph.parse('../../data/target/world_cup.ttl', format='turtle')
 
         print('Data loaded')
 

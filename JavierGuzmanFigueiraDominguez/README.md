@@ -345,14 +345,45 @@ Así mismo, tales acciones deben realizarse bajo las siguientes restricciones:
   LIMIT 50
 ```
 
+### Aplicación
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se ha desarrollado un prototipo funcional en *python*, utilizando el framework web [Bottle](https://github.com/bottlepy/bottle). Esta aplicación muestra una interfaz web que permite al usuario realizar una selección de la información que desee recuperar. Cada una de estas opciones utiliza una de las consultas mostradas anteriormente. A continuación, se puede observar una vista de las vistas de la aplicación web:
+
+![picture alt](assets/app.png "Aplication")
+
+&nbsp;&nbsp;&nbsp;&nbsp;Tal y como se puede apreciar, los datos se muestran en forma de tabla en todas las vistas y la navegación se realiza mediante los enlaces de la parte superior. Estos enlaces obtienen la siguiente información:
+
+- Years: obtiene la información referida a las distintas ediciones del mundial (ruta `/`).
+- Teams: recupera el listado de países y sus códigos asociados (ruta `/teams`).
+- Goals: obtiene el *ranking* de goles anotados por país (ruta `/goals`).
+- Players: recupera el *ranking* de partidos disputados por cada jugador (ruta `/players`).
+- Random edition: cada vez que se selecciona, obtiene información de los partidos de una de las ediciones. Esta edición se obtiene de forma aleatoria cada vez que se accede mediante el link. También se puede acceder explícitamente introduciendo el año de la edición en la URL (ruta `/years/<edition_year>`).
+
+&nbsp;&nbsp;&nbsp;&nbsp;Para la ejecución de la aplicación, son necesarias las siguientes liberías de *Python*, además de tener instalada alguna de las versiones de *Python 3*.
+
+- [Random](https://docs.python.org/3.7/library/random.html)
+- [Bottle](https://github.com/bottlepy/bottle)
+- [RDFLib](https://github.com/RDFLib/rdflib)
+- [Pandas](https://pandas.pydata.org/)
+
+&nbsp;&nbsp;&nbsp;&nbsp;Una vez instaladas correctamente todas las dependencias, se podrá lanzar la aplicación mediante la ejecución del archivo `app.py` desde dentro del directorio `fifa-world-cup-app/src`. El programa empleará un tiempo para cargar los datos del fichero RDF en formato Turtle y abrirá el puerto `8080` del servidor local para la ejecución de la aplicación web.
+
 ## <a name="conclusions"/>4. Conclusiones</a>
 
+&nbsp;&nbsp;&nbsp;&nbsp;Mediante la construcción de datos enlazados o traducción de conjuntos de datos en otro formato, se puede provechar el gran potencial que aporta la Web Semántica. Tanto enriquece los datos, dotando a las relaciones existentes entre características, como aporta relaciones con recursos disponibles de forma global. De esta forma, se pueden llegar a entender e interpretar mejor los datos propios, además de extender la propia información.
 
+&nbsp;&nbsp;&nbsp;&nbsp;Así mismo, se ha observado que existen una gran cantidad de liberías en distintos lenguajes de programación, que permiten realizar consultas SPARQL. Esto facilita enormemente el desarrollo, dado que es posible incluir tales consultas en cualquier tipo de aplicación.
+
+&nbsp;&nbsp;&nbsp;&nbsp;Se han observado puntos potencialmente problemáticos, como las distintas codificaciones de caracteres, las distintas denominaciones de un mismo recurso según el idioma o la no estandarización de los vocabularios existentes. Estos aspectos enlentecen enormemente el proceso y generan multitud de dudas en el proceso de definición del vocabulario y de tratamiento de los datos.
 
 ## <a name="references"/>5. Bibliografía</a>
 
 - Material de la asignatura.
-- LOV Buscador Ontologias. http://lov.okfn.org.
-- OpenRefine. http://openrefine.org.
-- RDFLib. https://github.com/RDFLib/rdflib
-- SPARQL. https://www.w3.org/TR/rdf-sparql-query.
+- LOV, Buscador Ontologias: http://lov.okfn.org.
+- OpenRefine: http://openrefine.org.
+- RDFLib: https://github.com/RDFLib/rdflib
+- Best Practices for Publishing Linked data: https://www.w3.org/TR/ld-bp/.
+- RDFExtras: http://rdfextras.readthedocs.io/en/latest/index.html.
+- SPARQL: https://www.w3.org/TR/rdf-sparql-query.
+- Bottle: Python Web Framework. https://github.com/bottlepy/bottle.
+- Building linked data applications: http://euclid-project.eu/modules/chapter5.html.

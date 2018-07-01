@@ -13,7 +13,7 @@ def render_tables():
     data = repository.get_info()
     data.columns = ['Place', 'Total Attendance', 'Winner', 'Year']
 
-    return add_html(data.to_html(classes=tables_class, index=False, col_space=300))
+    return add_html(data.to_html(classes=tables_class, index=False))
 
 
 @app.route('/years/<year>')
