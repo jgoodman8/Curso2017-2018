@@ -30,7 +30,7 @@ class Repository:
         print('Data loaded')
 
     def get_info(self):
-        query = """        
+        query = """
             SELECT ?year ?winner ?place ?totalAttendance
             WHERE { 
                 ?year fwc:isWinner ?winner .
